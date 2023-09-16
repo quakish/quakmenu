@@ -1,4 +1,4 @@
-Urban Terror Menu by quak
+Urban Terror Custom Menu by quak
 Updated: 2023-09-16
 Version 1.0
 
