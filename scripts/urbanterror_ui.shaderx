@@ -1,0 +1,553 @@
+console
+{
+	nopicmip
+	nomipmaps
+	{
+		map gfx/misc/console01.tga 
+	}
+	if ( $con_version == "old" )
+	{
+		map gfx/misc/console01.tga 
+	}
+	if ( $con_version == "new" )
+	{
+		map gfx/misc/console02.tga 
+	}
+	if ( $con_version == "red" )
+	{
+		map gfx/misc/console03.tga 
+	}
+	if ( $con_version == "jump" )
+	{
+		map gfx/misc/console04.tga
+	}
+	if ( $con_version == "simple" )
+	{
+		map gfx/misc/console05.tga
+	}
+	if ( $con_version == "town" )
+	{
+		map gfx/misc/console06.tga
+	}
+	if ( $con_version == "quak" )
+	{
+		map gfx/misc/console07.tga
+	}
+	if ( $con_version == "black" )
+	{
+		map $whiteimage
+        rgbgen const ( 0 0 0 )
+	}
+}
+
+/*
+ui/assets/ut_menuback
+{
+	nopicmip
+	nomipmaps
+	{
+		map ui/assets/ut_menuback.jpg
+	}
+	if ( $menu_mapback == "yellow" && $menu_mapswap != "locked" )
+	{
+		map ui/assets/ut_menubackyellow.jpg
+	}
+	if ( $menu_mapback == "xmas" && $menu_mapswap != "locked" )
+	{
+		map ui/assets/ut_menubackxmas.jpg
+	}
+	if ( $menu_mapback == "vertigo" && $menu_mapswap != "locked" )
+	{
+		map ui/assets/ut_menubackvertigo.jpg
+	}
+	if ( $menu_mapback == "unim" && $menu_mapswap != "locked" )
+	{
+		map ui/assets/ut_menubackunim.jpg
+	}
+	if ( $menu_mapback == "underworld" && $menu_mapswap != "locked" )
+	{
+		map ui/assets/ut_menubackunderworld.jpg
+	}
+	if ( $menu_mapback == "tuesday" && $menu_mapswap != "locked" )
+	{
+		map ui/assets/ut_menubacktuesday.jpg
+	}
+	if ( $menu_mapback == "tower" && $menu_mapswap != "locked" )
+	{
+		map ui/assets/ut_menubacktower.jpg
+	}
+	if ( $menu_mapback == "tears" && $menu_mapswap != "locked" )
+	{
+		map ui/assets/ut_menubacktears.jpg
+	}
+	if ( $menu_mapback == "prison" && $menu_mapswap != "locked" )
+	{
+		map ui/assets/ut_menubackprison.jpg
+	}
+	if ( $menu_mapback == "qj1" && $menu_mapswap != "locked" )
+	{
+		map ui/assets/ut_menubackqj1.jpg
+	}
+	if ( $menu_mapback == "qj2" && $menu_mapswap != "locked" )
+	{
+		map ui/assets/ut_menubackqj2.jpg
+	}
+	if ( $menu_mapback == "qj3" && $menu_mapswap != "locked" )
+	{
+		map ui/assets/ut_menubackqj3.jpg
+	}
+	if ( $menu_mapback == "qj4" && $menu_mapswap != "locked" )
+	{
+		map ui/assets/ut_menubackqj4.jpg
+	}
+	if ( $menu_mapback == "qj0" && $menu_mapswap != "locked" )
+	{
+		map ui/assets/ut_menubackqj0.jpg
+	}
+	if ( $menu_mapback == "saturn" && $menu_mapswap != "locked" )
+	{
+		map ui/assets/ut_menubacksaturn.jpg
+	}
+	if ( $menu_mapback == "pixle" && $menu_mapswap != "locked" )
+	{
+		map ui/assets/ut_menubackpixle.jpg
+	}
+	if ( $menu_mapback == "overworked" && $menu_mapswap != "locked" )
+	{
+		map ui/assets/ut_menubackoverworked.jpg
+	}
+	if ( $menu_mapback == "melo" && $menu_mapswap != "locked" )
+	{
+		map ui/assets/ut_menubackmelo.jpg
+	}
+	if ( $menu_mapback == "jupiter" && $menu_mapswap != "locked" )
+	{
+		map ui/assets/ut_menubackjupiter.jpg
+	}
+	if ( $menu_mapback == "gamma2" && $menu_mapswap != "locked" )
+	{
+		map ui/assets/ut_menubackgamma2.jpg
+	}
+	if ( $menu_mapback == "flex0" && $menu_mapswap != "locked" )
+	{
+		map ui/assets/ut_menubackflex0.jpg
+	}
+	if ( $menu_mapback == "etlant" && $menu_mapswap != "locked" )
+	{
+		map ui/assets/ut_menubacketlant.jpg
+	}
+	if ( $menu_mapback == "ded" && $menu_mapswap != "locked" )
+	{
+		map ui/assets/ut_menubackded.jpg
+	}
+	if ( $menu_mapback == "darkseq" && $menu_mapswap != "locked" )
+	{
+		map ui/assets/ut_menubackdarkseq.jpg
+	}
+	if ( $menu_mapback == "blue" && $menu_mapswap != "locked" )
+	{
+		map ui/assets/ut_menubackblue.jpg
+	}	
+	if ( $menu_mapback == "blood" && $menu_mapswap != "locked" )
+	{
+		map ui/assets/ut_menubackblood.jpg
+	}
+	if ( $menu_mapback == "black" && $menu_mapswap != "locked" )
+	{
+		map ui/assets/ut_menubackblack.jpg
+	}
+	if ( $menu_mapback == "bitter" && $menu_mapswap != "locked" )
+	{
+		map ui/assets/ut_menubackbitter.jpg
+	}
+	if ( $menu_mapback == "betel" && $menu_mapswap != "locked" )
+	{
+		map ui/assets/ut_menubackbetel.jpg
+	}
+	if ( $menu_mapback == "babylon" && $menu_mapswap != "locked" )
+	{
+		map ui/assets/ut_menubackbabylon.jpg
+	}
+	if ( $menu_mapback == "azurea" && $menu_mapswap != "locked" )
+	{
+		map ui/assets/ut_menubackazurea.jpg
+	}
+	if ( $menu_mapback == "ava" && $menu_mapswap != "locked" )
+	{
+		map ui/assets/ut_menubackava.jpg
+	}
+	if ( $menu_mapback == "aurora" && $menu_mapswap != "locked" )
+	{
+		map ui/assets/ut_menubackaurora.jpg
+	}		
+	if ( $menu_mapback == "red" )
+	{
+		map ui/assets/ut_menuback.jpg
+	}
+	if ( $menu_mapback == "prayer" )
+	{
+		map ui/assets/ut_menubackred.jpg
+	}
+}*/
+
+
+/*
+	if ( $menu_mapback == "" )
+	{
+		map ui/assets/ut_menuback.jpg
+	}
+	if ( $menu_mapback == "" )
+	{
+		map ui/assets/ut_menuback.jpg
+	}
+	if ( $menu_mapback == "" )
+	{
+		map ui/assets/ut_menuback.jpg
+	}
+	if ( $menu_mapback == "" )
+	{
+		map ui/assets/ut_menuback.jpg
+	}
+	if ( $menu_mapback == "" )
+	{
+		map ui/assets/ut_menuback.jpg
+	}
+	if ( $menu_mapback == "" )
+	{
+		map ui/assets/ut_menuback.jpg
+	}
+*/
+
+
+
+
+
+
+snow
+{
+    cull none
+    entityMergable
+    nomipmaps
+    nopicmip
+	if ( $snowenabled != "yes" )
+    {
+        clampmap gfx/misc/snow.tga
+        tcmod rotate 100
+        blendfunc GL_ONE GL_ONE
+        rgbGen        vertex
+        alphaGen    vertex
+    }
+	if ( $snowenabled == "yes" )
+	{
+		map textures/qmenu/blank.tga
+		detail
+	}
+}
+
+
+
+/*
+gfx/hud/outline
+{
+	nopicmip
+	if ( $menu_nostamplayer == "yes" )
+	{
+		map gfx/hud2/outline.tga
+		blendFunc GL_SRC_ALPHA GL_ONE_MINUS_SRC_ALPHA
+	}
+	else
+	{
+		map gfx/hud/outline.tga
+		blendFunc GL_SRC_ALPHA GL_ONE_MINUS_SRC_ALPHA
+	}
+}
+
+gfx/hud/outline_o
+{
+	nopicmip
+	if ( $menu_nostamplayer == "yes" )
+	{
+		map gfx/hud2/outline_o.tga
+		blendFunc GL_SRC_ALPHA GL_ONE_MINUS_SRC_ALPHA
+	}
+		else
+	{
+		map gfx/hud/outline_o.tga
+		blendFunc GL_SRC_ALPHA GL_ONE_MINUS_SRC_ALPHA
+	}
+}
+
+gfx/hud/stamina1
+{
+	nopicmip
+	if ( $menu_nostamplayer == "yes" )
+	{
+		map gfx/hud2/stamina1.tga
+		blendFunc GL_SRC_ALPHA GL_ONE_MINUS_SRC_ALPHA
+	}
+	else
+	{
+		map gfx/hud/stamina1.tga
+		blendFunc GL_SRC_ALPHA GL_ONE_MINUS_SRC_ALPHA
+	}
+}
+
+gfx/hud/stamina1_o
+{
+	nopicmip
+	if ( $menu_nostamplayer == "yes" )
+	{
+		map gfx/hud2/stamina1_o.tga
+		blendFunc GL_SRC_ALPHA GL_ONE_MINUS_SRC_ALPHA
+	}
+	else
+	{
+		map gfx/hud/stamina1_o.tga
+		blendFunc GL_SRC_ALPHA GL_ONE_MINUS_SRC_ALPHA
+	}
+}
+
+
+gfx/hud/stamina2
+{
+	nopicmip
+	if ( $menu_nostamplayer == "yes" )
+	{
+		map gfx/hud2/stamina2.tga
+		blendFunc GL_SRC_ALPHA GL_ONE_MINUS_SRC_ALPHA
+	}
+	else
+	{
+		map gfx/hud/stamina2.tga
+		blendFunc GL_SRC_ALPHA GL_ONE_MINUS_SRC_ALPHA
+	}
+}
+
+gfx/hud/stamina2_o
+{
+	nopicmip
+	if ( $menu_nostamplayer == "yes" )
+	{
+		map gfx/hud2/stamina2_o.tga
+		blendFunc GL_SRC_ALPHA GL_ONE_MINUS_SRC_ALPHA
+	}
+	else
+	{
+		map gfx/hud/stamina2_o.tga
+		blendFunc GL_SRC_ALPHA GL_ONE_MINUS_SRC_ALPHA
+	}
+}
+
+gfx/hud/stamina3
+{
+	nopicmip
+	if ( $menu_nostamplayer == "yes" )
+	{
+		map gfx/hud2/stamina3.tga
+		blendFunc GL_SRC_ALPHA GL_ONE_MINUS_SRC_ALPHA
+	}
+	else
+	{
+		map gfx/hud/stamina3.tga
+		blendFunc GL_SRC_ALPHA GL_ONE_MINUS_SRC_ALPHA
+	}
+}
+
+gfx/hud/stamina3_o
+{
+	nopicmip
+	if ( $menu_nostamplayer == "yes" )
+	{
+		map gfx/hud2/stamina3_o.tga
+		blendFunc GL_SRC_ALPHA GL_ONE_MINUS_SRC_ALPHA
+	}
+	else
+	{
+		map gfx/hud/stamina3_o.tga
+		blendFunc GL_SRC_ALPHA GL_ONE_MINUS_SRC_ALPHA
+	}
+}
+
+gfx/hud/stamina4
+{
+	nopicmip
+	if ( $menu_nostamplayer == "yes" )
+	{
+		map gfx/hud2/stamina4.tga
+		blendFunc GL_SRC_ALPHA GL_ONE_MINUS_SRC_ALPHA
+	}
+	else
+	{
+		map gfx/hud/stamina4.tga
+		blendFunc GL_SRC_ALPHA GL_ONE_MINUS_SRC_ALPHA
+	}
+}
+
+gfx/hud/stamina4_o
+{
+	nopicmip
+	if ( $menu_nostamplayer == "yes" )
+	{
+		map gfx/hud2/stamina4_o.tga
+		blendFunc GL_SRC_ALPHA GL_ONE_MINUS_SRC_ALPHA
+	}
+	else
+	{
+		map gfx/hud/stamina4_o.tga
+		blendFunc GL_SRC_ALPHA GL_ONE_MINUS_SRC_ALPHA
+	}
+}
+
+gfx/hud/stamina5
+{
+	nopicmip
+	if ( $menu_nostamplayer == "yes" )
+	{
+		map gfx/hud2/stamina5.tga
+		blendFunc GL_SRC_ALPHA GL_ONE_MINUS_SRC_ALPHA
+	}
+	else
+	{
+		map gfx/hud/stamina5.tga
+		blendFunc GL_SRC_ALPHA GL_ONE_MINUS_SRC_ALPHA
+	}
+}
+
+gfx/hud/stamina5_o
+{
+	nopicmip
+	if ( $menu_nostamplayer == "yes" )
+	{
+		map gfx/hud2/stamina5_o.tga
+		blendFunc GL_SRC_ALPHA GL_ONE_MINUS_SRC_ALPHA
+	}
+	else
+	{
+		map gfx/hud/stamina5_o.tga
+		blendFunc GL_SRC_ALPHA GL_ONE_MINUS_SRC_ALPHA
+	}
+}
+
+gfx/hud/stamina6
+{
+	nopicmip
+	if ( $menu_nostamplayer == "yes" )
+	{
+		map gfx/hud2/stamina6.tga
+		blendFunc GL_SRC_ALPHA GL_ONE_MINUS_SRC_ALPHA
+	}
+	else
+	{
+		map gfx/hud/stamina6.tga
+		blendFunc GL_SRC_ALPHA GL_ONE_MINUS_SRC_ALPHA
+	}
+}
+
+gfx/hud/stamina6_o
+{
+	nopicmip
+	if ( $menu_nostamplayer == "yes" )
+	{
+		map gfx/hud2/stamina6_o.tga
+		blendFunc GL_SRC_ALPHA GL_ONE_MINUS_SRC_ALPHA
+	}
+	else
+	{
+		map gfx/hud/stamina6_o.tga
+		blendFunc GL_SRC_ALPHA GL_ONE_MINUS_SRC_ALPHA
+	}
+}
+
+gfx/hud/stamina7
+{
+	nopicmip
+	if ( $menu_nostamplayer == "yes" )
+	{
+		map gfx/hud2/stamina7.tga
+		blendFunc GL_SRC_ALPHA GL_ONE_MINUS_SRC_ALPHA
+	}
+	else
+	{
+		map gfx/hud/stamina7.tga
+		blendFunc GL_SRC_ALPHA GL_ONE_MINUS_SRC_ALPHA
+	}
+}
+
+gfx/hud/stamina7_o
+{
+	nopicmip
+	if ( $menu_nostamplayer == "yes" )
+	{
+		map gfx/hud2/stamina7_o.tga
+		blendFunc GL_SRC_ALPHA GL_ONE_MINUS_SRC_ALPHA
+	}
+	else
+	{
+		map gfx/hud/stamina7_o.tga
+		blendFunc GL_SRC_ALPHA GL_ONE_MINUS_SRC_ALPHA
+	}
+}
+
+gfx/hud/stamina8
+{
+	nopicmip
+	if ( $menu_nostamplayer == "yes" )
+	{
+		map gfx/hud2/stamina8.tga
+		blendFunc GL_SRC_ALPHA GL_ONE_MINUS_SRC_ALPHA
+	}
+	else
+	{
+		map gfx/hud/stamina8.tga
+		blendFunc GL_SRC_ALPHA GL_ONE_MINUS_SRC_ALPHA
+	}
+}
+
+gfx/hud/stamina8_o
+{
+	nopicmip
+	if ( $menu_nostamplayer == "yes" )
+	{
+		map gfx/hud2/stamina8_o.tga
+		blendFunc GL_SRC_ALPHA GL_ONE_MINUS_SRC_ALPHA
+	}
+	else
+	{
+		map gfx/hud/stamina8_o.tga
+		blendFunc GL_SRC_ALPHA GL_ONE_MINUS_SRC_ALPHA
+	}
+}
+
+gfx/hud/stamina9
+{
+	nopicmip
+	if ( $menu_nostamplayer == "yes" )
+	{
+		map gfx/hud2/stamina9.tga
+		blendFunc GL_SRC_ALPHA GL_ONE_MINUS_SRC_ALPHA
+	}
+	else
+	{
+		map gfx/hud/stamina9.tga
+		blendFunc GL_SRC_ALPHA GL_ONE_MINUS_SRC_ALPHA
+	}
+}
+
+gfx/hud/stamina9_o
+{
+	nopicmip
+	if ( $menu_nostamplayer == "yes" )
+	{
+		map gfx/hud2/stamina9_o.tga
+		blendFunc GL_SRC_ALPHA GL_ONE_MINUS_SRC_ALPHA
+	}
+	else
+	{
+		map gfx/hud/stamina9_o.tga
+		blendFunc GL_SRC_ALPHA GL_ONE_MINUS_SRC_ALPHA
+	}
+}
+*/
+
+
+
