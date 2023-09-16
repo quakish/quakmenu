@@ -1,0 +1,161 @@
+#include "ui/menudef.h"
+
+{
+\\ Server Information Popup Menu \\
+//@Barbatos 4.2.002 - increased the size of the box
+
+menuDef {
+	name "ingame_serverinfo"
+   	visible 0
+   	fullscreen 0
+   	rect 160 110 320 260
+	focusColor 1 1 1 1
+   	style 1
+	popup
+	onClose { }
+	onOpen { uiScript ServerStatus }
+	onESC { close ingame_serverinfo }
+
+
+  	itemDef {
+		name serverinfo
+		rect 0 0 320 19
+		style 1	
+		text "SERVER INFORMATION" 
+		textalign 1
+		textstyle 0
+		textscale .22
+		textalignx 160
+		textaligny 14
+		forecolor 1 1 1 .75
+		backcolor .02 .05 .2 .7
+		visible 1
+		decoration
+		}
+
+
+	
+		itemDef {
+		name back
+		type 0
+		rect 0 20 320 220
+		style 1
+		border 0
+		backcolor 0 0 0 .9
+		visible 1
+		decoration
+	}
+
+
+		
+	itemDef {
+		name serverinfo
+		rect 5 20 315 195
+		type ITEM_TYPE_LISTBOX
+		style WINDOW_STYLE_FILLED
+		elementwidth 120
+		elementheight 14
+		textscale .19
+		border 0
+		elementtype LISTBOX_TEXT
+		feeder FEEDER_SERVERSTATUS
+		forecolor 1 1 1 .85
+		notselectable
+		visible 1
+		columns 4		2 40 20
+						40 40 10
+						90 40 10
+						135 60 20
+	 	}
+
+	itemDef {
+		name window
+		rect 20 55 304 230
+		style 1
+		backcolor 0 0 0 0
+		forecolor 0 0 0 0
+		border 0
+		visible 1
+		decoration
+		}
+
+
+
+
+//	BUTTON	//
+
+	itemDef {
+		name refresh
+		type 1
+		group grpControlbutton
+		style WINDOW_STYLE_FILLED
+		rect 0 215 160 25
+		forecolor 1 1 1 1
+		backcolor 0 0 0 .3
+		border 0
+		visible 1
+		action { play "sound/misc/kcaction.wav" ; uiScript ServerStatus }
+		mouseEnter { setcolor backcolor 0 0 .55 .5} 
+		mouseExit { setcolor backcolor 0 0 0 .3 } 
+		}
+
+	itemDef {
+		name exit
+		type 1
+		group grpControlbutton
+		style WINDOW_STYLE_FILLED
+		rect 160 215 160 25
+		forecolor 1 1 1 1
+		backcolor 0 0 0 .3
+		border 0
+		visible 1
+		action { play "sound/misc/kcaction.wav" ; close ingame_serverinfo }
+		mouseEnter { setcolor backcolor 0 0 .55 .5} 
+		mouseExit { setcolor backcolor 0 0 0 .3 } 
+		}
+
+//	TEXT		//
+
+	itemDef {
+		name refresh
+		text "REFRESH"
+		type 0
+		textscale .23
+		group grpControlbutton
+		style WINDOW_STYLE_FILLED
+		rect 80 215 50 25
+		textalign 1
+		textalignx 0
+		textaligny 17
+		forecolor 1 1 1 .65
+		backcolor 0 0 0 0
+		border 0
+		visible 1
+		decoration
+		}
+
+	itemDef {
+		name exit
+		text "CLOSE"
+		type 0
+		textscale .23
+		group grpControlbutton
+		style WINDOW_STYLE_FILLED
+		rect 240 215 50 25
+		textalign 1
+		textalignx 0
+		textaligny 17
+		forecolor 1 1 1 .65
+		backcolor 0 0 0 0
+		border 0
+		visible 1
+		decoration
+		}
+
+	
+}
+
+
+}
+
+

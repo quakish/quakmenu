@@ -1,0 +1,2619 @@
+#include "ui/menudef.h"
+{
+
+	/* GAME OPTIONS MENU
+	New Implementation by woekele, started on august 2006 for 4.0. This needed to be redone, badly.
+	*/
+
+	//Standard Menu Creation
+
+	menuDef {
+		name "options_menu"
+		visible 0
+		rect 0 70 490 340
+		focusColor 1 1 1 1
+		style 1
+		border 1
+		onOpen { show general ; hide crosshair ; hide minimap ; hide teaminfo ; hide blood ; hide bullet ; hide chat ; hide gun ; hide meters ; hide jump ; hide jump2 ; hide speed ; hide render ; hide demo ; hide console }
+		onEsc { close options_menu ; close setup_menu ; open main }
+
+		itemDef {
+			group gameoptions
+			name window
+			rect 10 10 436 313
+			style 1
+			border 1
+			bordercolor .5 .5 .5 1
+			forecolor 1 1 1 1
+			backcolor 0 0 0 .8
+			visible 1
+			decoration
+			mouseEnter { show optionsangle_on ; hide optionsangle }
+			mouseExit { show optionsangle ; hide optionsangle_on }
+		}
+
+		itemDef {
+			group gameoptions
+			name optionsangle
+			style WINDOW_STYLE_SHADER
+			background "ui/assets/angle.tga"
+			rect 430 12 16 16
+			visible 1
+			decoration
+		}
+
+		itemDef {
+			group gameoptions
+			name optionsangle_on
+			style WINDOW_STYLE_SHADER
+			background "ui/assets/angle_on.tga"
+			rect 430 12 16 16
+			visible 0
+			decoration
+		}
+
+		itemDef {
+			group gameoptions
+			name screenname
+			text "game options"
+			textscale .6
+			textalignx 10
+			textaligny 30
+			rect 10 288 150 50
+			style 1
+			forecolor 1 1 1 .15
+			visible 1
+			decoration
+		}
+
+		//Defining the category buttons
+
+		itemDef {
+			group gameoptions
+			name generalsettings
+			type 1
+			style 1
+			action { play "sound/misc/kcaction.wav" ; show general ; hide crosshair ; hide minimap ; hide teaminfo ; hide blood ; hide bullet ; hide chat ; hide gun ; hide meters ; hide jump ; hide jump2 ; hide speed ; hide render ; hide demo ; hide console }
+			text "General Settings"
+			rect 25 26 150 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			forecolor 1 1 1 1
+			backcolor 0 0 .55 0.6
+			visible 1
+			border 3
+			bordercolor .5 .5 .5 1
+			mouseEnter { setitemcolor generalsettings backcolor 0 0 .55 1 }
+			mouseExit { setitemcolor generalsettings backcolor 0 0 .55 0.6 }
+		}
+		
+		itemDef {
+			group gameoptions
+			name metersettings
+			type 1
+			style 1
+			action { play "sound/misc/kcaction.wav" ; show meters ; hide general ; hide crosshair ; hide minimap ; hide blood ; hide bullet ; hide teaminfo ; hide chat ; hide gun ; hide jump ; hide jump2 ; hide speed ; hide render ; hide demo ; hide console }
+			text "Meter Settings"
+			rect 25 46 150 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			forecolor 1 1 1 1
+			backcolor 0 0 .55 0.6
+			visible 1
+			border 3
+			bordercolor .5 .5 .5 1
+			mouseEnter { setitemcolor metersettings backcolor 0 0 .55 1 }
+			mouseExit { setitemcolor metersettings backcolor 0 0 .55 0.6 }
+		}
+		
+		itemDef {
+			group gameoptions
+			name crosshairsettings
+			type 1
+			style 1
+			action { play "sound/misc/kcaction.wav" ; show crosshair ; hide general ; hide minimap ; hide teaminfo ; hide blood ; hide bullet ; hide chat ; hide gun ; hide meters ; hide jump ; hide jump2 ; hide speed ; hide render ; hide demo ; hide console }
+			text "Crosshair Settings"
+			rect 25 66 150 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			forecolor 1 1 1 1
+			backcolor 0 0 .55 0.6
+			visible 1
+			border 3
+			bordercolor .5 .5 .5 1
+			mouseEnter { setitemcolor crosshairsettings backcolor 0 0 .55 1 }
+			mouseExit { setitemcolor crosshairsettings backcolor 0 0 .55 0.6 }
+		}
+
+		itemDef {
+			group gameoptions
+			name minimapsettings
+			type 1
+			style 1
+			action { play "sound/misc/kcaction.wav" ; show minimap ; hide general ; hide crosshair ; hide teaminfo ; hide blood ; hide bullet ; hide chat ; hide gun ; hide meters ; hide jump ; hide jump2 ; hide speed ; hide render ; hide demo ; hide console }
+			text "Minimap & Team"
+			rect 25 86 150 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			forecolor 1 1 1 1
+			backcolor 0 0 .55 0.6
+			visible 1
+			border 3
+			bordercolor .5 .5 .5 1
+			mouseEnter { setitemcolor minimapsettings backcolor 0 0 .55 1 }
+			mouseExit { setitemcolor minimapsettings backcolor 0 0 .55 0.6 }
+		}
+
+		itemDef {
+			group gameoptions
+			name bulletimpactsettings
+			type 1
+			style 1
+			action { play "sound/misc/kcaction.wav" ; show bullet ; hide general ; hide crosshair ; hide minimap ; hide blood ; hide teaminfo ; hide chat ; hide gun ; hide meters ; hide jump ; hide jump2 ; hide speed ; hide render ; hide demo ; hide console }
+			text "Bullet & Blood Settings"
+			rect 25 106 150 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			forecolor 1 1 1 1
+			backcolor 0 0 .55 0.6
+			visible 1
+			border 3
+			bordercolor .5 .5 .5 1
+			mouseEnter { setitemcolor bulletimpactsettings backcolor 0 0 .55 1 }
+			mouseExit { setitemcolor bulletimpactsettings backcolor 0 0 .55 0.6 }
+		}
+
+		itemDef {
+			group gameoptions
+			name chatsettings
+			type 1
+			style 1
+			action { play "sound/misc/kcaction.wav" ; show chat ; hide general ; hide crosshair ; hide minimap ; hide blood ; hide bullet ; hide teaminfo ; hide gun ; hide meters ; hide jump ; hide jump2 ; hide speed ; hide render ; hide demo ; hide console }
+			text "Chat Settings"
+			rect 25 126 150 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			forecolor 1 1 1 1
+			backcolor 0 0 .55 0.6
+			visible 1
+			border 3
+			bordercolor .5 .5 .5 1
+			mouseEnter { setitemcolor chatsettings backcolor 0 0 .55 1 }
+			mouseExit { setitemcolor chatsettings backcolor 0 0 .55 0.6 }
+		}
+
+		itemDef {
+			group gameoptions
+			name gunsettings
+			type 1
+			style 1
+			action { play "sound/misc/kcaction.wav" ; show gun ; hide general ; hide crosshair ; hide minimap ; hide blood ; hide bullet ; hide teaminfo ; hide chat ; hide meters ; hide jump ; hide jump2 ; hide speed ; hide render ; hide demo ; hide console }
+			text "Gun Settings"
+			rect 25 146 150 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			forecolor 1 1 1 1
+			backcolor 0 0 .55 0.6
+			visible 1
+			border 3
+			bordercolor .5 .5 .5 1
+			mouseEnter { setitemcolor gunsettings backcolor 0 0 .55 1 }
+			mouseExit { setitemcolor gunsettings backcolor 0 0 .55 0.6 }
+		}
+		
+		itemDef {
+			group gameoptions
+			name demosettings
+			type 1
+			style 1
+			action { play "sound/misc/kcaction.wav" ; show demo ; hide gun ; hide general ; hide crosshair ; hide minimap ; hide blood ; hide bullet ; hide teaminfo ; hide chat ; hide meters ; hide jump ; hide jump2 ; hide speed ; hide render ; hide console }
+			text "Demo Settings"
+			rect 25 166 150 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			forecolor 1 1 1 1
+			backcolor 0 0 .55 0.6
+			visible 1
+			border 3
+			bordercolor .5 .5 .5 1
+			mouseEnter { setitemcolor demosettings backcolor 0 0 .55 1 }
+			mouseExit { setitemcolor demosettings backcolor 0 0 .55 0.6 }
+		}
+
+		itemDef {
+			group gameoptions
+			name consolesettings
+			type 1
+			style 1
+			action { play "sound/misc/kcaction.wav" ; show console ; hide general ; hide crosshair ; hide minimap ; hide blood ; hide bullet ; hide chat ; hide gun ; hide meters ; hide jump ; hide jump2 ; hide speed ; hide render ; hide demo }
+			text "Console Settings"
+			rect 25 186 150 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			forecolor 1 1 1 1
+			backcolor 0 0 .55 0.6
+			visible 1
+			border 3
+			bordercolor .5 .5 .5 1
+			mouseEnter { setitemcolor consolesettings backcolor 0 0 .55 1 }
+			mouseExit { setitemcolor consolesettings backcolor 0 0 .55 0.6 }
+		}
+		
+		itemDef {
+			group gameoptions
+			name jumpsettings
+			cvartest "jumphud_enabled"
+			ShowCvar { "1" ; "0" ; "2" ; "3" }
+			type 1
+			style 1
+			action { play "sound/misc/kcaction.wav" ; show jump ; hide jump2 ; hide gun ; hide general ; hide crosshair ; hide minimap ; hide blood ; hide bullet ; hide teaminfo ; hide chat ; hide meters ; hide speed ; hide render ; hide demo ; hide console }
+			text "Jump Settings"
+			rect 25 206 150 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			forecolor 1 1 1 1
+			backcolor 0 0 .55 0.6
+			visible 1
+			border 3
+			bordercolor .5 .5 .5 1
+			mouseEnter { setitemcolor jumpsettings backcolor 0 0 .55 1 }
+			mouseExit { setitemcolor jumpsettings backcolor 0 0 .55 0.6 }
+		}
+		
+		itemDef {
+			group gameoptions
+			name jumpsettings2
+			cvartest "jumphud_enabled"
+			ShowCvar { "1" ; "2" ; "3" }
+			type 1
+			style 1
+			action { play "sound/misc/kcaction.wav" ; show jump2 ; hide jump ; hide gun ; hide general ; hide crosshair ; hide minimap ; hide blood ; hide bullet ; hide teaminfo ; hide chat ; hide meters ; hide speed ; hide render ; hide demo ; hide console }
+			text "\'Cheat\' Settings"
+			rect 25 226 150 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			forecolor 1 1 1 1
+			backcolor 0 0 .55 0.6
+			visible 1
+			border 3
+			bordercolor .5 .5 .5 1
+			mouseEnter { setitemcolor jumpsettings2 backcolor 0 0 .55 1 }
+			mouseExit { setitemcolor jumpsettings2 backcolor 0 0 .55 0.6 }
+		}
+		
+		itemDef {
+			group gameoptions
+			name speedsettings
+			cvartest "jumphud_enabled"
+			ShowCvar { "1" ; "2" ; "3" }
+			type 1
+			style 1
+			action { play "sound/misc/kcaction.wav" ; show speed ; hide jump2 ; hide jump ; hide gun ; hide general ; hide crosshair ; hide minimap ; hide blood ; hide bullet ; hide teaminfo ; hide chat ; hide meters ; hide render ; hide demo ; hide console }
+			text "Speed Meter Settings"
+			rect 25 246 150 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			forecolor 1 1 1 1
+			backcolor 0 0 .55 0.6
+			visible 1
+			border 3
+			bordercolor .5 .5 .5 1
+			mouseEnter { setitemcolor speedsettings backcolor 0 0 .55 1 }
+			mouseExit { setitemcolor speedsettings backcolor 0 0 .55 0.6 }
+		}
+		
+		itemDef {
+			group gameoptions
+			name rendersettings
+			cvartest "jumphud_enabled"
+			ShowCvar { "1" ; "2" ; "3" }
+			type 1
+			style 1
+			action { play "sound/misc/kcaction.wav" ; show render ; hide speed ; hide jump2 ; hide jump ; hide gun ; hide general ; hide crosshair ; hide minimap ; hide blood ; hide bullet ; hide teaminfo ; hide chat ; hide meters ; hide demo ; hide console }
+			text "Renders"
+			rect 25 266 150 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			forecolor 1 1 1 1
+			backcolor 0 0 .55 0.6
+			visible 1
+			border 3
+			bordercolor .5 .5 .5 1
+			mouseEnter { setitemcolor rendersettings backcolor 0 0 .55 1 }
+			mouseExit { setitemcolor rendersettings backcolor 0 0 .55 0.6 }
+		}
+
+		itemDef {
+			group gameoptions
+			name rectangle
+			rect 25 25 150 262
+			cvartest "jumphud_enabled"
+			ShowCvar { "1" ; "2" ; "3" }
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			decoration
+		}
+		
+		itemDef {
+			group gameoptions
+			name rectangle
+			rect 25 25 150 202
+			cvartest "jumphud_enabled"
+			ShowCvar { "0" }
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			decoration
+		}
+		
+		itemDef {
+			group gameoptions
+			name rectangle
+			rect 10 10 150 182
+			cvartest "jumphud_enabled"
+			hideCvar { "1" ; "0" ; "2" ; "3" }
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			decoration
+		}
+
+		//GENERAL
+
+		itemDef {
+			name fov
+			group general
+			type ITEM_TYPE_MULTI
+			cvartest "r_overrideview"
+			hideCvar { "1" }
+			Action { play "sound/misc/kcaction.wav" }
+			text "Field of View:"
+			cvar "cg_fov"
+			cvarfloatlist { "90 Degrees" 90 "95 Degrees" 95 "100 Degrees" 100 "105 Degrees" 105 "110 Degrees" 110 }
+			rect 185 35 250 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			forecolor 1 1 1 1
+			visible 1
+		}
+		
+		itemDef {
+			name fov
+			group general
+			type ITEM_TYPE_MULTI
+			cvartest "r_overrideview"
+			showCvar { "1" }
+			Action { play "sound/misc/kcaction.wav" }
+			text "Field of View:"
+			cvar "r_fov"
+			cvarfloatlist { "110 Degrees" 110 "115 Degrees" 115 "120 Degrees" 120 "125 Degrees" 125 "130 Degrees" 130 "135 Degrees" 135 "140 Degrees" 140 "145 Degrees" 145 "150 Degrees" 150 }
+			rect 185 35 250 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			forecolor 1 1 1 1
+			visible 1
+		}
+
+		itemDef {
+			name nvg
+			group general
+			type ITEM_TYPE_MULTI
+			Action { play "sound/misc/kcaction.wav" }
+			text "Tac Goggles Color:"
+			cvar "cg_nvg"
+			cvarfloatlist { "Green" 0 "Red" 1 "Blue" 2 "Yellow" 3 "Cyan" 4 "Magenta" 5 "Pink" 6 "Orange" 7 }
+			rect 185 55 250 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			forecolor 1 1 1 1
+			visible 1
+		}
+
+		itemDef {
+			name breathing
+			group general
+			type ITEM_TYPE_YESNO
+			Action { play "sound/misc/kcaction.wav" }
+			text "Breathing Sounds:"
+			cvar "cg_sfxBreathing"
+			rect 185 75 250 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			forecolor 1 1 1 1
+			visible 1
+		}
+
+		itemDef {
+			name countdownsound
+			group general
+			type ITEM_TYPE_YESNO
+			Action { play "sound/misc/kcaction.wav" }
+			text "Countdown Sound:"
+			cvar "cg_countdownSound"
+			rect 185 95 250 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			forecolor 1 1 1 1
+			visible 1
+		}
+		
+		itemDef {
+			name autoscreenshot
+			group general
+			type ITEM_TYPE_MULTI
+			Action { play "sound/misc/kcaction.wav" }
+			text "Auto Screenshots:"
+			cvar "cg_autoscreenshot"
+			cvarfloatlist { "No" 0 "Always" 1 "Matchmode Only" 2 }
+			rect 185 115 250 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			forecolor 1 1 1 1
+			visible 1
+		}
+
+		itemDef {
+			name autorecord
+			group general
+			type ITEM_TYPE_YESNO
+			Action { play "sound/misc/kcaction.wav" }
+			text "Auto Record Matchmode:"
+			cvar "cg_autorecordmatch"
+			rect 185 135 250 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			forecolor 1 1 1 1
+			visible 1
+		}
+
+		itemDef {
+			name allowdownload
+			group general
+			type ITEM_TYPE_MULTI
+			cvartest "jumphud_enabled"
+			HideCvar { "1" ; "0" ; "2" ; "3" }
+			Action { play "sound/misc/kcaction.wav" }
+			text "Auto Download:"
+			cvar "cl_autodownload"
+			cvarfloatlist { "Enabled" 1 "Disabled" 0 }
+			rect 185 155 250 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			forecolor 1 1 1 1
+			visible 1
+		}
+		
+		itemDef {
+			name allowdownload
+			group general
+			type ITEM_TYPE_MULTI
+			cvartest "jumphud_enabled"
+			ShowCvar { "1" ; "0" ; "2" ; "3" }
+			Action { play "sound/misc/kcaction.wav" }
+			text "Auto Download:"
+			cvar "cl_allowdownload"
+			cvarfloatlist { "Enabled" 1 "Disabled" 0 }
+			rect 185 155 250 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			forecolor 1 1 1 1
+			visible 1
+		}
+		
+		//METERS
+
+		itemDef {
+			name drawhealth
+			group meters
+			type ITEM_TYPE_YESNO
+			Action { play "sound/misc/kcaction.wav" }
+			text "Draw Health Percentage:"
+			cvar "cg_drawhealth"
+			rect 185 35 250 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			visible 1
+
+		}
+		
+		itemDef {
+			name drawclock
+			group meters
+			type ITEM_TYPE_YESNO
+			Action { play "sound/misc/kcaction.wav" }
+			text "Draw Clock:"
+			cvar "cg_drawclock"
+			rect 185 55 250 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			forecolor 1 1 1 1
+			visible 1
+		}
+		
+		itemDef {
+			name timer
+			group meters
+			type ITEM_TYPE_YESNO
+			Action { play "sound/misc/kcaction.wav" }
+			text "Show Timer:"
+			cvar "cg_drawtimer"
+			rect 185 75 250 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			forecolor 1 1 1 1
+			visible 1
+		}
+
+		itemDef {
+			name vanilaspeed
+			group meters
+			type ITEM_TYPE_MULTI
+			Action { play "sound/misc/kcaction.wav" }
+			text "Show Speed (Vanilla):"
+			cvar "cg_speedo"
+			cvarStrList { "^7Off", "0", "^7Ups", "1", "^7Kph", "2", "^7Mph", "3" }
+			rect 185 95 250 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			forecolor 1 1 1 1
+			visible 1
+		}
+
+		itemDef {
+			name accel
+			group meters
+			type ITEM_TYPE_MULTI
+			Action { play "sound/misc/kcaction.wav" }
+			text "Show Accel:"
+			cvar "cg_accelero"
+			cvarStrList { "^7Off", "0", "^7Minimal", "1", "^7Dedicated", "2" }
+			rect 185 115 250 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			forecolor 1 1 1 1
+			visible 1
+		}
+
+		itemDef {
+			name lagometer
+			group meters
+			type ITEM_TYPE_YESNO
+			Action { play "sound/misc/kcaction.wav" }
+			text "Show Netgraph:"
+			cvar "cg_lagometer"
+			rect 185 135 250 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			forecolor 1 1 1 1
+			visible 1
+		}
+		
+		itemDef {
+			name drawfps
+			group meters
+			type ITEM_TYPE_YESNO
+			Action { play "sound/misc/kcaction.wav" }
+			text "Draw FPS:"
+			cvar "cg_drawfps"
+			rect 185 155 250 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			forecolor 1 1 1 1
+			visible 1
+		}
+		
+		itemDef {
+			name drawkeys
+			group meters
+			type ITEM_TYPE_MULTI
+			Action { play "sound/misc/kcaction.wav" }
+			text "Draw Keys (Vanilla):"
+			cvar "cg_drawkeys"
+			cvarFloatList { "Off" 0, "Spec Only" 1, "Always" 2 }
+			rect 185 175 250 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			forecolor 1 1 1 1
+			visible 1
+		}
+		
+		//Bugged for now
+		/*itemDef {
+			name drawstam
+			group meters
+			type ITEM_TYPE_MULTI
+			Action { play "sound/misc/kcaction.wav" }
+			text "Stamina/Health (Vanilla):"
+			cvar "menu_nostamplayer"
+			cvarStrList { "Off", "yes", "On", "" }
+			rect 185 195 250 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			forecolor 1 1 1 1
+			visible 1
+		}
+		
+		itemDef {
+			name drawstam
+			group meters
+			type 0
+			text "/vid_restart"
+			rect 355 195 250 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .18
+			forecolor 1 0 0 1
+			visible 1
+		}*/
+
+		//CROSSHAIR
+
+		itemDef {
+			name crosshair
+			rect 285 35 30 30
+			type 8
+			style 1
+			textalign 0
+			textaligny 30
+			textalignx 0
+			border 0
+			ownerdraw UI_CROSSHAIR
+			Action { play "sound/misc/kcaction.wav" }
+			visible 1
+			forecolor 1 1 1 1
+		}
+
+		itemDef {
+			name crosshair
+			rect 185 35 100 20
+			forecolor 1 1 1 1
+			type 0
+			style 1
+			text "Crosshairtype:"
+			textscale .25
+			textalign 0
+			textaligny 20
+			textalignx 10
+			visible 1
+			decoration
+		}
+
+		itemdef {
+			name crosshair
+			rect 185 75 250 20
+			type ITEM_TYPE_MULTI
+			text ""
+			cvar "cg_crosshairrgb"
+			cvarStrList { "^7White", "1,1,1,1", "^7Black", "0,0,0,1", "^1Red", "1,0,0,1", "^2Green", "0,1,0,1", "^4Blue", "0,0,1,1", "^3Yellow", "1,1,0,1", "^5Cyan", "0,1,1,1", "^6Magenta", "1,0,1,1", "^7White", "1 1 1 1", "^7Black", "0 0 0 1", "^1Red", "1 0 0 1", "^2Green", "0 1 0 1", "^4Blue", "0 0 1 1", "^3Yellow", "1 1 0 1", "^5Cyan", "0 1 1 1", "^6Magenta", "1 0 1 1" }
+			Action { play "sound/misc/kcaction.wav" }
+			text "Crosshaircolor:"
+			textalign 0
+			textaligny 15
+			textalignx 10
+			border 0
+			textscale .25
+			visible 1
+		}
+
+		itemDef {
+			name crosshair
+			type ITEM_TYPE_MULTI
+			text "Crosshaircolor Friendly:"
+			cvar "cg_crosshairfriendrgb"
+			cvarStrList { "^7White", "1,1,1,1", "^7Black", "0,0,0,1", "^1Red", "1,0,0,1", "^2Green", "0,1,0,1", "^4Blue", "0,0,1,1", "^3Yellow", "1,1,0,1", "^5Cyan", "0,1,1,1", "^6Magenta", "1,0,1,1", "^7White", "1 1 1 1", "^7Black", "0 0 0 1", "^1Red", "1 0 0 1", "^2Green", "0 1 0 1", "^4Blue", "0 0 1 1", "^3Yellow", "1 1 0 1", "^5Cyan", "0 1 1 1", "^6Magenta", "1 0 1 1" }
+			Action { play "sound/misc/kcaction.wav" }
+			rect 185 95 250 20
+			visible 1
+			textscale .25
+			textaligny 15
+			textalignx 10
+			textalign 0
+		}
+
+		itemDef {
+			name crosshair
+			type ITEM_TYPE_MULTI
+			text "Scopecolor:"
+			cvar "cg_scopergb"
+			cvarStrList { "^7White", "1,1,1,1", "^7Black", "0,0,0,1", "^1Red", "1,0,0,1", "^2Green", "0,1,0,1", "^4Blue", "0,0,1,1", "^3Yellow", "1,1,0,1", "^5Cyan", "0,1,1,1", "^6Magenta", "1,0,1,1", "^7White", "1 1 1 1", "^7Black", "0 0 0 1", "^1Red", "1 0 0 1", "^2Green", "0 1 0 1", "^4Blue", "0 0 1 1", "^3Yellow", "1 1 0 1", "^5Cyan", "0 1 1 1", "^6Magenta", "1 0 1 1" }
+			Action { play "sound/misc/kcaction.wav" }
+			rect 185 115 250 20
+			visible 1
+			textscale .25
+			textaligny 15
+			textalignx 10
+			textalign 0
+		}
+
+		itemDef {
+			name crosshair
+			type ITEM_TYPE_MULTI
+			text "Scopecolor Friendly:"
+			cvar "cg_scopefriendrgb"
+			cvarStrList { "^7White", "1,1,1,1", "^7Black", "0,0,0,1", "^1Red", "1,0,0,1", "^2Green", "0,1,0,1", "^4Blue", "0,0,1,1", "^3Yellow", "1,1,0,1", "^5Cyan", "0,1,1,1", "^6Magenta", "1,0,1,1", "^7White", "1 1 1 1", "^7Black", "0 0 0 1", "^1Red", "1 0 0 1", "^2Green", "0 1 0 1", "^4Blue", "0 0 1 1", "^3Yellow", "1 1 0 1", "^5Cyan", "0 1 1 1", "^6Magenta", "1 0 1 1" }
+			Action { play "sound/misc/kcaction.wav" }
+			rect 185 135 250 20
+			visible 1
+			textscale .25
+			textaligny 15
+			textalignx 10
+			textalign 0
+		}
+
+		itemDef {
+			name crosshair
+			type ITEM_TYPE_EDITFIELD
+			cvar "cg_crosshairsize"
+			//cvarFloatList { 5 5 10 10 15 15 20 20 25 25 30 30 35 35 40 40 45 45 50 50 55 55 60 60 65 65 70 70 75 75 80 80 85 85 90 90 95 95 100 100 }
+			rect 185 155 250 20
+			Action { play "sound/misc/kcaction.wav" }
+			text "Crosshairsize:"
+			textscale .25
+			textalign 0
+			textaligny 15
+			textalignx 10
+			visible 1
+		}
+
+		itemDef {
+			name crosshair
+			type ITEM_TYPE_YESNO
+			text "Show Scope Accuracy:"
+			cvar "cg_scopering"
+			Action { play "sound/misc/kcaction.wav" }
+			rect 185 175 250 20
+			visible 1
+			textscale .25
+			textaligny 15
+			textalignx 10
+			textalign 0
+		}
+
+		itemDef {
+			name crosshair
+			type 12
+			text "G36 Scopetype:"
+			cvar "cg_scopeg36"
+			cvarStrList { "Cross", "0", "Cross2", "1", "T-shape", "2", "Dot", "3", "Cross-Dot", "4" }
+			Action { play "sound/misc/kcaction.wav" }
+			rect 185 195 250 20
+			visible 1
+			textscale .25
+			textaligny 15
+			textalignx 10
+			textalign 0
+		}
+
+		itemDef {
+			name crosshair
+			type 12
+			text "PSG-1 Scopetype:"
+			cvar "cg_scopepsg"
+			cvarStrList { "Cross", "0", "Cross2", "1", "T-shape", "2", "Dot", "3", "Cross-Dot", "4" }
+			Action { play "sound/misc/kcaction.wav" }
+			rect 185 215 250 20
+			visible 1
+			textscale .25
+			textaligny 15
+			textalignx 10
+			textalign 0
+		}
+
+		itemDef {
+			name crosshair
+			type 12
+			text "SR8 Scopetype:"
+			cvar "cg_scopesr8"
+			cvarStrList { "Cross", "0", "Cross2", "1", "T-shape", "2", "Dot", "3", "Cross-Dot", "4" }
+			Action { play "sound/misc/kcaction.wav" }
+			rect 185 235 250 20
+			visible 1
+			textscale .25
+			textaligny 15
+			textalignx 10
+			textalign 0
+		}
+
+		itemDef {
+			name crosshair
+			type 12
+			text "FRF1 Scopetype:"
+			cvar "cg_scopefrf1"
+			cvarStrList { "Cross", "0", "Cross2", "1", "T-shape", "2", "Dot", "3", "Cross-Dot", "4" }
+			Action { play "sound/misc/kcaction.wav" }
+			rect 185 255 250 20
+			visible 1
+			textscale .25
+			textaligny 15
+			textalignx 10
+			textalign 0
+		}
+
+		//MINIMAP
+
+		itemDef {
+			name minimap
+			type ITEM_TYPE_YESNO
+			Action { play "sound/misc/kcaction.wav" }
+			text "Minimap Enabled:"
+			cvar "cg_maptoggle"
+			rect 185 35 250 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			visible 1
+		}
+
+
+		itemDef {
+			cvartest cg_maptoggle
+			hidecvar { "0" }
+			name minimap
+			type ITEM_TYPE_MULTI
+			Action { play "sound/misc/kcaction.wav" }
+			text "Minimap Position:"
+			cvar "cg_mappos"
+			cvarFloatList { "Top Left" 1 "Middle Left" 2 "Lower left 1" 3 "Lower Left 2" 4 "Lower Middle" 5 "Lower Right" 6 "Middle Right" 7 "Upper Right 1" 8 "Upper Right 2" 9 "Upper Middle" 10 }
+			rect 185 55 250 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			visible 1
+		}
+
+		itemDef {
+			cvartest cg_maptoggle
+			hidecvar { "0" }
+			name minimap
+			type ITEM_TYPE_MULTI
+			Action { play "sound/misc/kcaction.wav" }
+			text "Minimap Size:"
+			cvar "cg_mapsize"
+			cvarFloatList { "50" 50 "75" 75 "100" 100 "125" 125 "150" 150 "175" 175 "200" 200 "225" 225 "250" 250 "275" 275 "300" 300 "325" 325 "350" 350 "375" 375 "400" 400 "425" 425 "450" 450 "475" 475 "500" 500 }
+			rect 185 75 250 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			visible 1
+		}
+
+		itemDef {
+			cvartest cg_maptoggle
+			hidecvar { "0" }
+			name minimap
+			type ITEM_TYPE_MULTI
+			Action { play "sound/misc/kcaction.wav" }
+			text "Minimap Alpha:"
+			cvar "cg_mapalpha"
+			cvarFloatList { "0.05" 0.05 "0.10" 0.1 "0.15" 0.15 "0.20" 0.2 "0.25" 0.25 "0.30" 0.3 "0.35" 0.35 "0.40" 0.4 "0.45" 0.45 "0.50" .5 "0.55" .55 "0.60" .6 "0.65" 0.65 "0.70" .7 "0.75" .75 "0.80" .8 "0.85" .85 "0.90" .9 "0.95" .95 "1.00" 1 }
+			rect 185 95 250 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			visible 1
+		}
+
+		itemDef {
+			cvartest cg_maptoggle
+			hidecvar { "0" }
+			name minimap
+			type ITEM_TYPE_MULTI
+			Action { play "sound/misc/kcaction.wav" }
+			text "Minimap Arrow Scale:"
+			cvar "cg_maparrowscale"
+			cvarFloatList { "1" 1 "2" 2 "3" 3 "4" 4 "5" 5 "6" 6 "7" 7 "8" 8 "9" 9 "10" 10 }
+			rect 185 115 250 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			visible 1
+		}
+
+		itemDef {
+			name minimap
+			type ITEM_TYPE_YESNO
+			Action { play "sound/misc/kcaction.wav" }
+			text "Player location:"
+			cvar "cg_drawMapLocation"
+			rect 185 135 250 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			visible 1
+		}
+
+		itemDef {
+			name minimap
+			type ITEM_TYPE_MULTI
+			Action { play "sound/misc/kcaction.wav" }
+			text "Team Status List:"
+			cvar "cg_drawteamoverlay"
+			cvarFloatList { "None" 0 "Very Detailed" 1 "Normal Detail" 2 "Little Detail" 3 }
+			rect 185 155 250 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			visible 1
+		}
+
+		itemDef {
+			cvartest cg_drawteamoverlay
+			hidecvar { "0" }
+			name minimap
+			type ITEM_TYPE_YESNO
+			Action { play "sound/misc/kcaction.wav" }
+			text "Show Individual Scores:"
+			cvar "cg_drawteamoverlayscores"
+			rect 185 175 250 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			visible 1
+		}
+
+		itemDef {
+			name minimap
+			type 11
+			text "Show Teammate Info on Aim:"
+			cvar "cg_drawcrosshairnames"
+			Action { play "sound/misc/kcaction.wav" }
+			rect 185 195 250 20
+			visible 1
+			textscale .25
+			textaligny 15
+			textalignx 10
+			textalign 0
+		}
+
+		itemDef {
+			name minimap
+			cvartest cg_drawcrosshairnames
+			hidecvar { "0" }
+			type 12
+			text "Location of Info:"
+			cvar "cg_crosshairnamestype"
+			cvarStrList { "Bottom of Screen", "0", "Above Teammate", "1", "Above Crosshair", "3", "Below Crosshair", "2" }
+			Action { play "sound/misc/kcaction.wav" }
+			rect 185 215 250 20
+			visible 1
+			textscale .25
+			textaligny 15
+			textalignx 10
+			textalign 0
+		}
+
+		itemDef {
+			name minimap
+			cvartest cg_drawcrosshairnames
+			hidecvar { "0" }
+			type 12
+			text "Size of Info:"
+			cvar "cg_crosshairnamessize"
+			cvarFloatList { 0.05 .0.05 0.1 0.1 0.15 0.15 0.20 0.20 0.25 0.25 0.30 0.30 0.35 0.35 0.40 0.40 0.45 0.45 0.50 0.50 0.55 0.55 0.60 0.60 0.65 0.65 0.70 0.70 0.75 0.75 0.80 0.80 0.85 0.85 0.90 0.90 0.95 0.95 1.0 1.0 }
+			Action { play "sound/misc/kcaction.wav" }
+			rect 185 235 250 20
+			visible 1
+			textscale .25
+			textaligny 15
+			textalignx 10
+			textalign 0
+		}
+
+		itemDef {
+			name minimap
+			type 11
+			text "Show Team Scores:"
+			cvar "cg_drawteamscores"
+			Action { play "sound/misc/kcaction.wav" }
+			rect 185 255 250 20
+			visible 1
+			textscale .25
+			textaligny 15
+			textalignx 10
+			textalign 0
+		}
+
+		//BULLET IMPACTS
+
+		itemDef {
+			name bullet
+			type ITEM_TYPE_YESNO
+			Action { play "sound/misc/kcaction.wav" }
+			text "Smoke Effect on Impact:"
+			cvar "cg_sfxsurfaceimpacts"
+			rect 185 35 250 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			visible 1
+		}
+
+
+		itemDef {
+			cvartest cg_sfxsurfaceimpacts
+			showcvar { "1" }
+			name bullet
+			type ITEM_TYPE_YESNO
+			Action { play "sound/misc/kcaction.wav" }
+			text "More Effects on Impact:"
+			cvar "cg_sfxParticles"
+			rect 185 55 250 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			visible 1
+		}
+
+		itemDef {
+			name bullet
+			type ITEM_TYPE_MULTI
+			Action { play "sound/misc/kcaction.wav" }
+			text "Leave Marks:"
+			cvar "cg_marktotaltime"
+			cvarfloatlist { "Off" 0 "5 Seconds" 5000 "10 Seconds" 10000 "20 seconds" 20000 }
+			rect 185 75 250 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			visible 1
+		}
+
+		itemDef {
+			name bullet
+			type ITEM_TYPE_YESNO
+			Action { play "sound/misc/kcaction.wav" }
+			text "Hitsound:"
+			cvar "cg_hitsound"
+			rect 185 95 250 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			visible 1
+		}
+
+		itemDef {
+			name bullet
+			type ITEM_TYPE_YESNO
+			Action { play "sound/misc/kcaction.wav" }
+			text "Killsound:"
+			cvar "cg_killsound"
+			rect 185 115 250 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			visible 1
+		}
+		
+		//BLOOD SETTINGS
+
+		itemDef {
+			name bullet
+			type ITEM_TYPE_YESNO
+			Action { play "sound/misc/kcaction.wav" }
+			text "Enable Blood:"
+			cvar "com_blood"
+			rect 185 135 250 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			visible 1
+		}
+
+
+		itemDef {
+			cvartest com_blood
+			showcvar { "1" }
+			name bullet
+			type ITEM_TYPE_YESNO
+			Action { play "sound/misc/kcaction.wav" }
+			text "Show Wounds:"
+			cvar "cg_sfxshowdamage"
+			rect 185 155 250 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			visible 1
+		}
+
+		itemDef {
+			cvartest com_blood
+			showcvar { "1" }
+			name bullet
+			type ITEM_TYPE_YESNO
+			Action { play "sound/misc/kcaction.wav" }
+			text "Show Bleeding:"
+			cvar "cg_visiblebleeding"
+			rect 185 175 250 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			visible 1
+		}
+
+		//CHAT SETTINGS
+
+		itemDef {
+			name chat
+			type ITEM_TYPE_YESNO
+			Action { play "sound/misc/kcaction.wav" }
+			text "Teamchats Only:"
+			cvar "cg_teamchatsonly"
+			rect 185 35 250 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			visible 1
+		}
+
+		itemDef {
+			name chat
+			type ITEM_TYPE_MULTI
+			Action { play "sound/misc/kcaction.wav" }
+			text "Chat Time:"
+			cvar "cg_chattime"
+			cvarFloatList { "Disabled Chat" 0 "1 Second" 1000 "2 Seconds" 2000 "3 Seconds" 3000 "4 Seconds" 4000 "5 Seconds" 5000 "6 Seconds" 6000 "7 Seconds" 7000 "8 Seconds" 8000 }
+			rect 185 55 250 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			visible 1
+		}
+
+		itemDef {
+			name chat
+			type ITEM_TYPE_MULTI
+			Action { play "sound/misc/kcaction.wav" }
+			text "Chat Lines:"
+			cvar "cg_chatheight"
+			cvarFloatList { "Disabled Chat" 0 "1" 1 "2" 2 "3" 3 "4" 4 "5" 5 "6" 6 "7" 7 "8" 8 }
+			rect 185 75 250 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			visible 1
+		}
+
+		itemDef {
+			name chat
+			type ITEM_TYPE_MULTI
+			Action { play "sound/misc/kcaction.wav" }
+			text "Chat Size:"
+			cvar "cg_chatSize"
+			cvarFloatList { "8" 8 "9" 9 "10" 10 "11" 11 "12" 12 "13" 13 "14" 14 }
+			rect 185 95 250 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			visible 1
+		}
+
+		itemDef {
+			name chat
+			type ITEM_TYPE_MULTI
+			Action { play "sound/misc/kcaction.wav" }
+			text "Message Time:"
+			cvar "cg_msgtime"
+			cvarFloatList { "1 Second" 1000 "2 Seconds" 2000 "3 Seconds" 3000 "4 Seconds" 4000 "5 Seconds" 5000 "6 Seconds" 6000 "7 Seconds" 7000 "8 Seconds" 8000 }
+			rect 185 115 250 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			visible 1
+		}
+
+		itemDef {
+			name chat
+			type ITEM_TYPE_MULTI
+			Action { play "sound/misc/kcaction.wav" }
+			text "Message Lines:"
+			cvar "cg_msgheight"
+			cvarFloatList { "Disabled Messages" 0 "1" 1 "2" 2 "3" 3 "4" 4 "5" 5 "6" 6 "7" 7 "8" 8 }
+			rect 185 135 250 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			visible 1
+		}
+
+		itemDef {
+			name chat
+			type ITEM_TYPE_MULTI
+			Action { play "sound/misc/kcaction.wav" }
+			text "Message Size:"
+			cvar "cg_msgSize"
+			cvarFloatList { "8" 8 "9" 9 "10" 10 "11" 11 "12" 12 "13" 13 "14" 14 }
+			rect 185 155 250 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			visible 1
+		}
+
+		itemDef {
+			name chat
+			type ITEM_TYPE_YESNO
+			Action { play "sound/misc/kcaction.wav" }
+			text "Disable Radio Sounds:"
+			cvar "cg_NoVoiceChats"
+			rect 185 175 250 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			visible 1
+		}
+
+		itemDef {
+			name chat
+			type ITEM_TYPE_MULTI
+			Action { play "sound/misc/kcaction.wav" }
+			text "Auto Radio:"
+			cvar "cg_autoradio"
+			cvarFloatList { "Disabled" 0 "All enabled" 1 "Enabled, no 'Grenade!'" 2 }
+			rect 185 195 250 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			forecolor 1 1 1 1
+			visible 1
+		}
+
+		//GUN
+
+		itemDef {
+			name drawhands
+			group gun
+			type ITEM_TYPE_YESNO
+			Action { play "sound/misc/kcaction.wav" }
+			text "Show Gun:"
+			cvar "cg_drawhands"
+			rect 185 35 250 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			visible 1
+		}
+
+
+		itemDef {
+			cvartest cg_drawhands
+			hideCvar { "0" }
+			name gunsize
+			group gun
+			type ITEM_TYPE_YESNO
+			Action { play "sound/misc/kcaction.wav" }
+			text "Smaller Gun:"
+			cvar "cg_gunSize"
+			rect 185 55 250 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			visible 1
+		}
+
+		itemDef {
+			name showbullethits
+			group gun
+			type ITEM_TYPE_MULTI
+			Action { play "sound/misc/kcaction.wav" }
+			text "Hitting Info:"
+			cvar "cg_showbullethits"
+			cvarfloatlist { "None" 0 "Normal" 1 "Normal + Damage" 2 "Damage" 3 }
+			rect 185 75 250 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			forecolor 1 1 1 1
+			visible 1
+		}
+
+		itemDef {
+			name showkillsinfo
+			group gun
+			type ITEM_TYPE_MULTI
+			Action { play "sound/misc/kcaction.wav" }
+			text "Killing Info:"
+			cvar "cg_drawkilllog"
+			cvarfloatlist { "None" 0 "Normal" 1 "Reduced" 2 "Minimal" 3 "Old School" 4 "Old School + Details" 5 }
+			rect 185 95 250 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			forecolor 1 1 1 1
+			visible 1
+		}
+
+		itemDef {
+			name hudweaponinfo
+			group gun
+			type ITEM_TYPE_MULTI
+			Action { play "sound/misc/kcaction.wav" }
+			text "Weapon Info:"
+			cvar "cg_hudweaponinfo"
+			cvarfloatlist { "Icon View" 0 "Text View" 1 "Text and Icon" 2 }
+			rect 185 115 250 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			visible 1
+		}
+		/*
+		itemDef {
+			name muzzleflash
+			group gun
+			type ITEM_TYPE_YESNO
+			Action { play "sound/misc/kcaction.wav" }
+			text "Show Muzzle Flash:"
+			cvar "cg_sfxMuzzleFlash"
+			rect 185 135 250 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			visible 1
+		}
+		*/
+		itemDef {
+			name dynamiclight
+			group gun
+			type ITEM_TYPE_YESNO
+			Action { play "sound/misc/kcaction.wav" }
+			text "Dynamic Light:"
+			cvar "r_dynamiclight"
+			rect 185 135 250 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			visible 1
+		}
+
+		itemDef {
+			name brasstime
+			group gun
+			type ITEM_TYPE_MULTI
+			Action { play "sound/misc/kcaction.wav" }
+			text "Leave Brass:"
+			cvar "cg_sfxbrasstime"
+			cvarfloatlist { "Off" 0 "5 Seconds" 5000 "10 Seconds" 10000 "20 seconds" 20000 }
+			rect 185 155 250 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			visible 1
+		}
+
+		itemDef {
+			name lefthand
+			group gun
+			type ITEM_TYPE_YESNO
+			Action { play "sound/misc/kcaction.wav" }
+			text "Left-Handed:"
+			cvar "cg_leftHand"
+			rect 185 175 250 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			visible 1
+		}
+		
+		itemDef {
+			name gunx
+			group gun
+			type ITEM_TYPE_EDITFIELD
+			Action { play "sound/misc/kcaction.wav" }
+			text "Gun Position X:"
+			cvar "cg_gunX"
+			rect 185 195 250 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			visible 1
+		}
+		
+		itemDef {
+			name guny
+			group gun
+			type ITEM_TYPE_EDITFIELD
+			Action { play "sound/misc/kcaction.wav" }
+			text "Gun Position Y:"
+			cvar "cg_gunY"
+			rect 185 215 250 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			visible 1
+		}
+		
+		itemDef {
+			name gunz
+			group gun
+			type ITEM_TYPE_EDITFIELD
+			Action { play "sound/misc/kcaction.wav" }
+			text "Gun Position Z:"
+			cvar "cg_gunZ"
+			rect 185 235 250 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			visible 1
+		}
+		
+		// DEMO
+		
+		itemDef {
+			cvartest "record_demo"
+			HideCvar { "stoprecord; record" ; "stoprecord; record filename" ;
+			"vstr record_name1" ; "vstr record_name2" ; "vstr record_name3" ; "vstr record_name4" ;
+			"vstr record_name5" ; "vstr record_name6" ; "vstr record_name7" ; "vstr record_name8" ; 
+			"vstr record_name9" ; "vstr record_name0" }
+			name demostyle
+			group demo
+			type ITEM_TYPE_BUTTON
+			Action { play "sound/misc/kcaction.wav" ; exec "execq scripts/demorecordingstyle1.cfg" }
+			text "Demo Style: Other"
+			rect 185 35 250 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			forecolor 1 1 1 1
+			visible 1
+		}
+		
+		itemDef {
+			cvartest "record_demo"
+			showCvar { "stoprecord; record" }
+			name demostyle
+			group demo
+			type ITEM_TYPE_BUTTON
+			Action { play "sound/misc/kcaction.wav" ; exec "execq scripts/demorecordingstyle2.cfg" }
+			text "Demo Style: Vanilla (Unlimited)"
+			rect 185 35 250 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			forecolor 1 1 1 1
+			visible 1
+		}
+		
+		itemDef {
+			cvartest "record_demo"
+			showCvar { "vstr record_name1" ; "vstr record_name2" ; "vstr record_name3" ; "vstr record_name4" ;
+			"vstr record_name5" ; "vstr record_name6" ; "vstr record_name7" ; "vstr record_name8" ; 
+			"vstr record_name9" ; "vstr record_name0" }
+			name demostyle
+			group demo
+			type ITEM_TYPE_BUTTON
+			Action { play "sound/misc/kcaction.wav" ; exec "execq scripts/demorecordingstyle3.cfg" }
+			text "Demo Style: 10 Demo Cycle (Overwrite)"
+			rect 185 35 250 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			forecolor 1 1 1 1
+			visible 1
+		}
+		
+		itemDef {
+			cvartest "record_demo"
+			showCvar { "stoprecord; record filename" }
+			name demostyle
+			group demo
+			type ITEM_TYPE_BUTTON
+			Action { play "sound/misc/kcaction.wav" ; exec "execq scripts/demorecordingstyle1.cfg" }
+			text "Demo Style: Single Demo (Overwrite)"
+			rect 185 35 250 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			forecolor 1 1 1 1
+			visible 1
+		}
+		
+		itemDef {
+			name demoexplain
+			group demo
+			rect 185 55 200 20
+			textscale 0.22
+			textalign 0
+			textalignx 11
+			textaligny 15
+			forecolor 1 0 0 1
+			autowrapped
+			text "This effects the command: "
+			visible 1
+		}
+		
+		itemDef {
+			name demoexplain
+			group demo
+			rect 185 70 250 20
+			textscale 0.22
+			textalign 0
+			textalignx 11
+			textaligny 15
+			forecolor 1 0 0 1
+			autowrapped
+			text "\"vstr record_demo\" only (Default F12 bind)"
+			visible 1
+		}
+		
+		itemDef {
+			name drawdemo
+			group demo
+			type ITEM_TYPE_YESNO
+			Action { play "sound/misc/kcaction.wav" }
+			text "Draw Demo Recording:"
+			cvar "cl_drawrecording"
+			rect 185 90 250 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			forecolor 1 1 1 1
+			visible 1
+		}
+		
+		// Console
+		
+		itemDef {
+			name drawdemo
+			group console
+			type ITEM_TYPE_YESNO
+			Action { play "sound/misc/kcaction.wav" }
+			text "Auto Clear Console:"
+			cvar "con_autoclear"
+			rect 185 35 250 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			forecolor 1 1 1 1
+			visible 1
+		}
+		
+		itemDef {
+			name drawdemo
+			group console
+			type ITEM_TYPE_YESNO
+			Action { play "sound/misc/kcaction.wav" }
+			text "Console Timestamps:"
+			cvar "con_timestamp"
+			rect 185 55 250 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			forecolor 1 1 1 1
+			visible 1
+		}
+		
+		itemDef {
+			name drawdemo
+			group console
+			type ITEM_TYPE_EDITFIELD
+			Action { play "sound/misc/kcaction.wav" }
+			text "Console Text Scale:"
+			cvar "con_scale"
+			rect 185 75 250 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			forecolor 1 1 1 1
+			visible 1
+		}
+		
+		itemDef {
+			name drawdemo
+			group console
+			type ITEM_TYPE_EDITFIELD
+			Action { play "sound/misc/kcaction.wav" }
+			text "Console Height:"
+			cvar "con_height"
+			rect 185 95 250 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			forecolor 1 1 1 1
+			visible 1
+		}
+		
+		itemDef {
+			name drawdemo
+			group console
+			type ITEM_TYPE_EDITFIELD
+			Action { play "sound/misc/kcaction.wav" }
+			text "Console Height (CTRL):"
+			cvar "con_heightctrl"
+			rect 185 115 250 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			forecolor 1 1 1 1
+			visible 1
+		}
+		
+		itemDef {
+			name drawdemo
+			group console
+			type ITEM_TYPE_EDITFIELD
+			Action { play "sound/misc/kcaction.wav" }
+			text "Console Height (ALT):"
+			cvar "con_heightalt"
+			rect 185 135 250 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			forecolor 1 1 1 1
+			visible 1
+		}
+		
+		itemDef {
+			name drawdemo
+			group console
+			type ITEM_TYPE_EDITFIELD
+			Action { play "sound/misc/kcaction.wav" }
+			text "Console Height (SHIFT):"
+			cvar "con_heightshift"
+			rect 185 155 250 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			forecolor 1 1 1 1
+			visible 1
+		}
+		
+		itemDef {
+			name drawdemo
+			group console
+			type ITEM_TYPE_YESNO
+			Action { play "sound/misc/kcaction.wav" }
+			text "Enable Console Filters:"
+			cvar "con_filter"
+			rect 185 175 250 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			forecolor 1 1 1 1
+			visible 1
+		}
+		
+		itemDef {
+			name drawdemo
+			group console
+			type ITEM_TYPE_MULTI
+			Action { play "sound/misc/kcaction.wav" }
+			text "Console Spam Filter:"
+			cvar "con_filter9"
+			cvarstrlist { 
+				"Disabled", "", 
+				"Basic", " (has been saved|has been loaded|saved.|loaded.|WSAENETUNREACH|odd vertex count)", 
+				"Common Spam", " (has been saved|has been loaded|saved.|loaded.|WSAENETUNREACH|run has been|personal timer has been|a jump run.|odd vertex count|recording a demo|load twice within 2seconds|to demos/|You're on camera|demo recording.|killed herself.|killed himself.|by the Server Admin.)" ,
+				"Extended spam", " (has been saved|has been loaded|saved.|loaded.|WSAENETUNREACH|run has been|personal timer has been|a jump run.|odd vertex count|recording a demo|load twice within 2seconds|to demos/|You're on camera|demo recording.|killed herself.|killed himself.|by the Server Admin.|60 minutes |to vote.|by some well placed HURT!|back flip into the lava.|melted.|source tried to set )" 
+			}
+			rect 185 195 250 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			forecolor 1 1 1 1
+			visible 1
+		}
+		
+		itemDef {
+			name demoexplain
+			group console
+			rect 185 215 200 20
+			textscale 0.22
+			textalign 0
+			textalignx 11
+			textaligny 15
+			forecolor 1 0 0 1
+			autowrapped
+			text "This command uses \"con_filter9\""
+			visible 1
+		}
+		
+		itemDef {
+			name demoexplain
+			group console
+			rect 185 230 250 20
+			textscale 0.22
+			textalign 0
+			textalignx 11
+			textaligny 15
+			forecolor 1 0 0 1
+			autowrapped
+			text "You can use con_filter0, con_filter1, con_filter2 ..."
+			visible 1
+		}
+		
+		itemDef {
+			name demoexplain
+			group console
+			rect 185 245 250 20
+			textscale 0.22
+			textalign 0
+			textalignx 11
+			textaligny 15
+			forecolor 1 0 0 1
+			autowrapped
+			text "until ..9 to set console filters on your own"
+			visible 1
+		}
+		
+		itemDef {
+			name consoledesign
+			group console
+			type ITEM_TYPE_MULTI
+			Action { play "sound/misc/kcaction.wav" }
+			text "Console Design:"
+			cvar "con_version"
+			cvarstrlist { 
+				"Vanilla", "old",
+				"Simple", "simple",
+				"Clean", "new",
+				"Jump", "jump",
+				"Red", "red",
+				"Village", "town",
+				"Black", "black"
+			}
+			rect 185 265 250 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			forecolor 1 1 1 1
+			visible 1
+		}
+		
+		itemDef {
+			name consoledesign
+			group console
+			type 0
+			text "/vid_restart fast"
+			rect 335 265 250 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .18
+			forecolor 1 0 0 1
+			visible 1
+		}
+		
+		// JUMP
+		
+		itemDef {
+			name jumphuds
+			group jump
+			type ITEM_TYPE_MULTI
+			Action { play "sound/misc/kcaction.wav" }
+			text "Jump Huds:"
+			cvar "jumphud_enabled"
+			cvarfloatlist { "Enabled" 1 "Disabled" 0 }
+			rect 185 35 250 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			forecolor 1 1 1 1
+			visible 1
+		}
+		
+		itemDef {
+			name allowfov
+			group jump
+			type ITEM_TYPE_YESNO
+			cvartest "jumphud_enabled"
+			ShowCvar { "1" ; "2" ; "3" }
+			Action { play "sound/misc/kcaction.wav" }
+			text "Overwrite Fov:"
+			cvar "r_overrideview"
+			rect 185 55 250 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			forecolor 1 1 1 1
+			visible 1
+		}
+		
+		itemDef {
+			name truefov
+			group jump
+			type ITEM_TYPE_MULTI
+			cvartest "r_overrideview"
+			ShowCvar { "1" }
+			Action { play "sound/misc/kcaction.wav" }
+			text "True Field of View:"
+			cvar "r_fov"
+			cvarfloatlist { "110 Degrees" 110 "115 Degrees" 115 "120 Degrees" 120 "125 Degrees" 125 "130 Degrees" 130 "135 Degrees" 135 "140 Degrees" 140 "145 Degrees" 145 "150 Degrees" 150 }
+			rect 185 75 250 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			forecolor 1 1 1 1
+			visible 1
+		}
+		
+		itemDef {
+			name ghost
+			group jump
+			type ITEM_TYPE_MULTI
+			Action { play "sound/misc/kcaction.wav" }
+			text "Ghost:"
+			cvar "cg_ghost"
+			cvarfloatlist { "Disabled" 0 "Self" 1 "Everyone" 2 }
+			rect 185 95 250 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			forecolor 1 1 1 1
+			visible 1
+		}
+
+		itemDef {
+			name stamina
+			group jump
+			type ITEM_TYPE_MULTI
+			cvartest "jumphud_enabled"
+			ShowCvar { "1" ; "2" ; "3" }
+			Action { play "sound/misc/kcaction.wav" }
+			text "Enable Stamina Meter:"
+			cvar "jumphud_stamina"
+			cvarfloatlist { "Disabled" 0 "X/300 No color" 1 "X/100 No color" 3 "X/300 Color" 4 "X/100 Color" 6}
+			rect 185 115 250 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			forecolor 1 1 1 1
+			visible 1
+		}
+		
+		itemDef {
+			name drawsurface
+			group jump
+			type ITEM_TYPE_YESNO
+			cvartest "jumphud_enabled"
+			ShowCvar { "1" ; "2" ; "3" }
+			Action { play "sound/misc/kcaction.wav" }
+			text "Draw Surface Parms:"
+			cvar "jumphud_drawsurfparm"
+			rect 185 135 250 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			forecolor 1 1 1 1
+			visible 1
+		}
+		
+		itemDef {
+			name drawob
+			group jump
+			type ITEM_TYPE_YESNO
+			cvartest "jumphud_enabled"
+			ShowCvar { "1" ; "2" ; "3" }
+			Action { play "sound/misc/kcaction.wav" }
+			text "Draw Overbounces:"
+			cvar "jumphud_drawob"
+			rect 185 155 250 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			forecolor 1 1 1 1
+			visible 1
+		}
+		
+		itemDef {
+			name angle
+			group jump
+			type ITEM_TYPE_YESNO
+			cvartest "jumphud_enabled"
+			ShowCvar { "1" ; "2" ; "3" }
+			Action { play "sound/misc/kcaction.wav" }
+			text "Enable Angle View:"
+			cvar "jumphud_drawangle"
+			rect 185 175 250 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			forecolor 1 1 1 1
+			visible 1
+		}
+
+		itemDef {
+			name keys
+			group jump
+			type ITEM_TYPE_YESNO
+			cvartest "jumphud_enabled"
+			ShowCvar { "1" ; "2" ; "3" }
+			Action { play "sound/misc/kcaction.wav" }
+			text "Draw Keys:"
+			cvar "jumphud_drawkeys"
+			rect 185 195 250 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			forecolor 1 1 1 1
+			visible 1
+		}
+		
+		itemDef {
+			name timer
+			group jump
+			type ITEM_TYPE_YESNO
+			cvartest "jumphud_enabled"
+			ShowCvar { "1" ; "2" ; "3" }
+			Action { play "sound/misc/kcaction.wav" }
+			text "Draw Timer:"
+			cvar "jumphud_drawtimer"
+			rect 185 215 250 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			forecolor 1 1 1 1
+			visible 1
+		}
+		
+		itemDef {
+			name mapname
+			group jump
+			type ITEM_TYPE_YESNO
+			cvartest "jumphud_enabled"
+			ShowCvar { "1" ; "2" ; "3" }
+			Action { play "sound/misc/kcaction.wav" }
+			text "Draw Map Name:"
+			cvar "jumphud_userinfo_map"
+			rect 185 235 250 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			forecolor 1 1 1 1
+			visible 1
+		}
+		
+		itemDef {
+			name playername
+			group jump
+			type ITEM_TYPE_YESNO
+			cvartest "jumphud_enabled"
+			ShowCvar { "1" ; "2" ; "3" }
+			Action { play "sound/misc/kcaction.wav" }
+			text "Draw Player Name:"
+			cvar "jumphud_userinfo_name"
+			rect 185 255 250 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			forecolor 1 1 1 1
+			visible 1
+		}
+		
+		// JUMP 2
+		
+		itemDef {
+			name cgaz
+			group jump2
+			type ITEM_TYPE_YESNO
+			cvartest "jumphud_enabled"
+			ShowCvar { "1" ; "2" ; "3" }
+			Action { play "sound/misc/kcaction.wav" }
+			text "Enable Cgaz:"
+			cvar "cgaz_enabled"
+			rect 185 35 250 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			forecolor 1 1 1 1
+			visible 1
+		}
+		
+		itemDef {
+			name cgazyh
+			group jump2
+			type ITEM_TYPE_EDITFIELD
+			cvartest "jumphud_enabled"
+			ShowCvar { "1" ; "2" ; "3" }
+			Action { play "sound/misc/kcaction.wav" }
+			text "Cgaz Position:"
+			cvar "cgaz_yh"
+			rect 185 55 250 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			forecolor 1 1 1 1
+			visible 1
+		}
+		
+		itemDef {
+			name cgazspeed
+			group jump2
+			type ITEM_TYPE_MULTI
+			cvartest "jumphud_enabled"
+			ShowCvar { "1" ; "2" ; "3" }
+			Action { play "sound/misc/kcaction.wav" }
+			text "Cgaz Activation Speed:"
+			cvar "cgaz_speed"
+			cvarfloatlist { "Always" 0 "Movement" 10 "Pre Sprint" 220 "Full Sprint" 340 "After Pre" 500 "Higher Speeds" 1000}
+			rect 185 75 250 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			forecolor 1 1 1 1
+			visible 1
+		}
+		
+		itemDef {
+			name snap
+			group jump2
+			type ITEM_TYPE_MULTI
+			cvartest "jumphud_enabled"
+			ShowCvar { "1" ; "2" ; "3" }
+			Action { play "sound/misc/kcaction.wav" }
+			text "Enable Snap:"
+			cvar "snap_enabled"
+			cvarfloatlist { "Disabled" 0 "No Highlight" 1 "Highlight" 3}
+			rect 185 95 250 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			forecolor 1 1 1 1
+			visible 1
+		}
+		
+		itemDef {
+			name snapyh
+			group jump2
+			type ITEM_TYPE_EDITFIELD
+			cvartest "jumphud_enabled"
+			ShowCvar { "1" ; "2" ; "3" }
+			Action { play "sound/misc/kcaction.wav" }
+			text "Snap Position:"
+			cvar "snap_yh"
+			rect 185 115 250 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			forecolor 1 1 1 1
+			visible 1
+		}
+		
+		itemDef {
+			name snapstam
+			group jump2
+			type ITEM_TYPE_YESNO
+			cvartest "jumphud_enabled"
+			ShowCvar { "1" ; "2" ; "3" }
+			Action { play "sound/misc/kcaction.wav" }
+			text "Stamina Corrected Snaps:"
+			cvar "snap_stamina"
+			rect 185 135 250 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			forecolor 1 1 1 1
+			visible 1
+		}
+		
+		itemDef {
+			name jumpfov
+			group jump2
+			type ITEM_TYPE_EDITFIELD
+			cvartest "jumphud_enabled"
+			ShowCvar { "1" ; "2" ; "3" }
+			Action { play "sound/misc/kcaction.wav" }
+			text "Cgaz/Snap fov:"
+			cvar "jumphud_fov"
+			rect 185 155 250 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			forecolor 1 1 1 1
+			visible 1
+		}
+		
+		itemDef {
+			name snapstam
+			group jump2
+			type ITEM_TYPE_YESNO
+			Action { play "sound/misc/kcaction.wav" }
+			text "Third Person:"
+			cvar "cg_thirdPerson"
+			rect 185 175 250 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			forecolor 1 1 1 1
+			visible 1
+		}
+		
+		itemDef {
+			name snapstam
+			group jump2
+			type ITEM_TYPE_EDITFIELD
+			Action { play "sound/misc/kcaction.wav" }
+			text "Third Person Range:"
+			cvar "cg_thirdPersonRange"
+			rect 185 195 250 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			forecolor 1 1 1 1
+			visible 1
+		}
+		
+		itemDef {
+			name snapstam
+			group jump2
+			type ITEM_TYPE_EDITFIELD
+			Action { play "sound/misc/kcaction.wav" }
+			text "Third Person Angle:"
+			cvar "cg_thirdPersonAngle"
+			rect 185 215 250 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			forecolor 1 1 1 1
+			visible 1
+		}
+		
+		// Speed
+		
+		itemDef {
+			name speed
+			group speed
+			type ITEM_TYPE_YESNO
+			cvartest "jumphud_enabled"
+			ShowCvar { "1" ; "2" ; "3" }
+			Action { play "sound/misc/kcaction.wav" }
+			text "Enable Speed Meter:"
+			cvar "jumphud_speedo"
+			rect 185 35 250 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			forecolor 1 1 1 1
+			visible 1
+		}
+		
+		itemDef {
+			name zspeed
+			group speed
+			type ITEM_TYPE_YESNO
+			cvartest "jumphud_speedo"
+			ShowCvar { "1" }
+			Action { play "sound/misc/kcaction.wav" }
+			text "Show Accel:"
+			cvar "jumphud_speedo_showaccel"
+			rect 185 55 250 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			forecolor 1 1 1 1
+			visible 1
+		}
+		
+		itemDef {
+			name zspeed
+			group speed
+			type ITEM_TYPE_YESNO
+			cvartest "jumphud_enabled"
+			ShowCvar { "1" ; "2" ; "3" }
+			Action { play "sound/misc/kcaction.wav" }
+			text "Enable Vertical Speed Meter:"
+			cvar "jumphud_speedo_z"
+			rect 185 75 250 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			forecolor 1 1 1 1
+			visible 1
+		}
+		
+		itemDef {
+			name maxspeed
+			group speed
+			type ITEM_TYPE_YESNO
+			cvartest "jumphud_enabled"
+			ShowCvar { "1" ; "2" ; "3" }
+			Action { play "sound/misc/kcaction.wav" }
+			text "Enable Max-Speed Meter:"
+			cvar "jumphud_maxspeedo"
+			rect 185 95 250 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			forecolor 1 1 1 1
+			visible 1
+		}
+		
+		itemDef {
+			name maxspeed
+			group speed
+			type ITEM_TYPE_MULTI
+			cvartest "jumphud_maxspeedo"
+			ShowCvar { "1" }
+			Action { play "sound/misc/kcaction.wav" }
+			text "Highlighted Max-Speed Slot:"
+			cvar "jumphud_maxspeedo_hl"
+			cvarfloatlist { "1" 0 "2" 1 "3" 2 "4" 3 "5" 4}
+			rect 185 115 250 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			forecolor 1 1 1 1
+			visible 1
+		}
+		
+		itemDef {
+			name vanillaspeed
+			group speed
+			type ITEM_TYPE_MULTI
+			Action { play "sound/misc/kcaction.wav" }
+			text "Show Vanilla Speed:"
+			cvar "cg_speedo"
+			cvarStrList { "^7Off", "0", "^7Ups", "1", "^7Kph", "2", "^7Mph", "3" }
+			rect 185 135 250 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			forecolor 1 1 1 1
+			visible 1
+		}
+		
+		// RENDER
+		
+		itemDef {
+			name jumphuds
+			group render
+			cvartest "r_fastsky"
+			ShowCvar { "1" }
+			type ITEM_TYPE_BUTTON 
+			Action { play "sound/misc/kcaction.wav" ; exec "toggle r_fastsky" }
+			text "Render Skyboxes: Off"
+			rect 185 35 250 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			forecolor 1 1 1 1
+			visible 1
+		}
+		
+		itemDef {
+			name jumphuds
+			group render
+			cvartest "r_fastsky"
+			hideCvar { "1" }
+			type ITEM_TYPE_BUTTON 
+			Action { play "sound/misc/kcaction.wav" ; exec "toggle r_fastsky" }
+			text "Render Skyboxes: On"
+			rect 185 35 250 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			forecolor 1 1 1 1
+			visible 1
+		}
+		
+		itemDef {
+			name jumphuds
+			group render
+			type ITEM_TYPE_YESNO
+			Action { play "sound/misc/kcaction.wav" }
+			text "Render Triggers:"
+			cvar "r_renderTriggerBrushes"
+			rect 185 55 250 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			forecolor 1 1 1 1
+			visible 1
+		}
+		
+		itemDef {
+			name jumphuds
+			group render
+			type ITEM_TYPE_MULTI
+			Action { play "sound/misc/kcaction.wav" }
+			text "Style:"
+			cvar "r_renderTriggerBrushesShader"
+			cvarStrList { 
+			"Blended", "tcRenderShader",
+			"Filed", "tcRenderShaderFull", 
+			"Wired", "tcRenderShaderWire"
+			}
+			rect 185 75 250 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			forecolor 1 1 1 1
+			visible 1
+		}
+		
+		itemDef {
+			name jumphuds
+			group render
+			type ITEM_TYPE_YESNO
+			Action { play "sound/misc/kcaction.wav" }
+			text "Render Slick:"
+			cvar "r_renderSlickSurfaces"
+			rect 185 95 250 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			forecolor 1 1 1 1
+			visible 1
+		}
+		
+		itemDef {
+			name jumphuds
+			group render
+			type ITEM_TYPE_MULTI
+			Action { play "sound/misc/kcaction.wav" }
+			text "Style:"
+			cvar "r_renderSlickSurfacesShader"
+			cvarStrList { 
+			"Blended", "tcRenderShader",
+			"Filed", "tcRenderShaderFull", 
+			"Wired", "tcRenderShaderWire"
+			}
+			rect 185 115 250 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			forecolor 1 1 1 1
+			visible 1
+		}
+		
+		itemDef {
+			name jumphuds
+			group render
+			type ITEM_TYPE_YESNO
+			Action { play "sound/misc/kcaction.wav" }
+			text "Render Clips:"
+			cvar "r_renderClipBrushes"
+			rect 185 135 250 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			forecolor 1 1 1 1
+			visible 1
+		}
+		
+		itemDef {
+			name jumphuds
+			group render
+			type ITEM_TYPE_MULTI
+			Action { play "sound/misc/kcaction.wav" }
+			text "Style:"
+			cvar "r_renderClipBrushesShader"
+			cvarStrList { 
+			"Blended", "tcRenderShader",
+			"Filed", "tcRenderShaderFull", 
+			"Wired", "tcRenderShaderWire"
+			}
+			rect 185 155 250 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			forecolor 1 1 1 1
+			visible 1
+		}
+		
+		itemDef {
+			name jumphuds
+			group render
+			type ITEM_TYPE_YESNO
+			Action { play "sound/misc/kcaction.wav" }
+			text "Render Ladders:"
+			cvar "r_renderLadderSurfaces"
+			rect 185 175 250 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			forecolor 1 1 1 1
+			visible 1
+		}
+		
+		itemDef {
+			name jumphuds
+			group render
+			type ITEM_TYPE_MULTI
+			Action { play "sound/misc/kcaction.wav" }
+			text "Style:"
+			cvar "r_renderLadderSurfacesShader"
+			cvarStrList { 
+			"Blended", "tcRenderShader",
+			"Filed", "tcRenderShaderFull", 
+			"Wired", "tcRenderShaderWire"
+			}
+			rect 185 195 250 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			forecolor 1 1 1 1
+			visible 1
+		}
+		
+		itemDef {
+			name jumphuds
+			group render
+			type ITEM_TYPE_YESNO
+			Action { play "sound/misc/kcaction.wav" }
+			text "Draw Only Lightmaps:"
+			cvar "r_lightmap"
+			rect 185 215 250 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			forecolor 1 1 1 1
+			visible 1
+		}
+		
+		/* Hidden on request of Ulbens
+		itemDef {
+			name jumphuds
+			group render
+			type ITEM_TYPE_YESNO
+			Action { play "sound/misc/kcaction.wav" }
+			text "Draw Sun:"
+			cvar "r_drawsun"
+			rect 185 155 250 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			forecolor 1 1 1 1
+			visible 1
+		}
+		*/
+		
+		//END
+
+	}
+}

@@ -1,0 +1,765 @@
+#include "ui/menudef.h"
+{
+
+	/*  SERVERBROWSER
+	Revised by woekele, for 4.0. Changed some little things. Added the PB-filter
+	Revised by Barbatos, for 4.2. Removed the PB-filter and added the UrT Accounts filter.
+	*/
+
+	menuDef {
+		name "joinserver"
+		visible 0
+		fullscreen 1
+		rect 0 0 640 480
+		background "ui/assets/ut_menuback.jpg"
+		focusColor 1 1 1 1
+		//outOfBoundsClick
+		style 1
+		border 1
+		onOpen { uiScript UpdateFilter; }
+		onEsc { uiScript closeJoin }
+
+
+		//	ANIMATION	//
+		
+		itemDef {
+			name Circle01
+			visible 1
+			type 7
+			rect -170 -300 700 700
+			asset_model "models/misc/Circle01.md3"
+			model_skin "models/misc/square_circle.skin"
+			model_fovx 90
+			model_fovy 90
+			model_angle -35 215 0
+			model_rotation 0 0 -500
+			decoration
+		}
+		
+		itemDef {
+			name darken
+			style WINDOW_STYLE_FILLED
+			rect 0 0 640 480
+			backcolor 0 0 0 .05
+			visible 1
+			decoration
+		}
+		
+		
+		//	MENU DECORATIVE	//
+		
+		
+		// BLACK TOP BAR //
+		itemDef {
+			name window
+			rect -5 -6 650 76
+			style 1
+			border 0
+			backcolor 0 0 0 1
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			decoration
+		}
+		// BLACK BOTTOM BAR //
+		itemDef {
+			name window
+			rect -5 410 650 76
+			style 1
+			border 0
+			backcolor 0 0 0 1
+			border 1
+			bordercolor .5 .5 .5 1
+			visible 1
+			decoration
+		}
+
+		itemDef {
+			name ut_logo_graphic
+			style WINDOW_STYLE_SHADER
+			background "ui/assets/utlogo.tga"
+			rect 6 6 256 64
+			visible 1
+			//forecolor .25 .25 .25 1
+			decoration
+		}
+
+		itemDef {
+			name bigback
+			type 0
+			rect 20 97 600 267
+			style 1
+			backcolor 0 0 0 .7
+			visible 1
+			decoration
+		}
+		itemDef {
+			name subbar
+			type 0
+			rect 17 77 606 19
+			style 1
+			backcolor 0 0 0 .8
+			visible 1
+			decoration
+		}
+		itemDef {
+			name filtersback
+			type 0
+			rect 20 390 600 19
+			style 1
+			backcolor 0 0 0 .5
+			visible 1
+			decoration
+		}
+		itemDef {
+			name showback
+			style WINDOW_STYLE_FILLED
+			rect 170 390 150 19
+			backcolor 0 0 0 .5
+			visible 1
+			decoration
+		}
+
+
+		// SERVER LIST //
+
+
+		itemDef {
+			name serverlist
+			rect 17 97 620 267
+			type ITEM_TYPE_LISTBOX
+			style WINDOW_STYLE_FILLED
+			elementwidth 120
+			elementheight 13.6
+			textscale .2
+			elementtype LISTBOX_TEXT
+			feeder FEEDER_SERVERS
+			forecolor 1 1 1 .75
+			outlinecolor 1 1 1 .1
+			visible 1
+			columns 5 8 40 100 198 40 30 383 5 10 443 20 10 543 20 20
+			doubleClick { uiScript JoinServer }
+		}
+
+		
+		// SORT TABS //
+
+		itemDef {
+			name server
+			group grpTabs
+			type ITEM_TYPE_BUTTON
+			style WINDOW_STYLE_FILLED
+			rect 30 78 64 19
+			forecolor 1 1 1 1
+			visible 1 
+			action { play "sound/misc/kcaction.wav" ; 
+				uiScript ServerSort 0 ; }
+		}
+		itemDef {
+			name map
+			group grpTabs
+			type ITEM_TYPE_BUTTON
+			style WINDOW_STYLE_FILLED
+			rect 278 78 20 19
+			forecolor 1 1 1 1
+			visible 1 
+			action { play "sound/misc/kcaction.wav" ; 
+				uiScript ServerSort 1 ; }
+		}
+		itemDef {
+			name Players
+			group grpTabs
+			type ITEM_TYPE_BUTTON
+			style WINDOW_STYLE_FILLED
+			rect 403 78 37 19
+			forecolor 1 1 1 1
+			visible 1 
+			action { play "sound/misc/kcaction.wav" ; 
+				uiScript ServerSort 2 ; }
+		}
+		itemDef {
+			name Type
+			group grpTabs
+			type ITEM_TYPE_BUTTON
+			style WINDOW_STYLE_FILLED
+			rect 463 78 24 19
+			forecolor 1 1 1 1
+			visible 1 
+			action { play "sound/misc/kcaction.wav" ; 
+				uiScript ServerSort 3 ; }
+		}
+		itemDef {
+			name Ping
+			group grpTabs
+			type ITEM_TYPE_BUTTON
+			style WINDOW_STYLE_FILLED
+			rect 563 78 26 19
+			forecolor 1 1 1 1
+			visible 1 
+			action { play "sound/misc/kcaction.wav" ;
+				uiScript ServerSort 4 ; }
+		}
+
+
+		// SORT TAB TEXT //
+		
+		itemDef {
+			name server
+			group grpTabs
+			text "SERVER NAME"
+			type 0
+			textscale .2
+			style WINDOW_STYLE_FILLED
+			rect 30 90 70 19
+			forecolor .7 .7 .7 .7
+			visible 1 
+			decoration
+		}
+		itemDef {
+			name map
+			group grpTabs
+			type 0
+			text "MAP"
+			textscale .20
+			style WINDOW_STYLE_FILLED
+			rect 220 90 80 19
+			forecolor .7 .7 .7 .7
+			visible 1 
+			decoration
+		}
+		itemDef {
+			name Players
+			group grpTabs
+			text "GAMERS"
+			type 0
+			textscale .20
+			style WINDOW_STYLE_FILLED
+			rect 405 90 50 19
+			forecolor .7 .7 .7 .7
+			visible 1 
+			decoration
+		}
+		itemDef {
+			name Type
+			group grpTabs
+			text "TYPE"
+			textscale .20
+			type 0
+			style WINDOW_STYLE_FILLED
+			rect 465 90 50 19
+			forecolor .7 .7 .7 .7
+			visible 1 
+			decoration
+		}
+		itemDef {
+			name Ping
+			group grpTabs
+			text "PING"
+			type 0
+			textscale .20
+			style WINDOW_STYLE_FILLED
+			rect 565 90 53 19
+			forecolor .7 .7 .7 .7
+			visible 1
+			decoration
+		}
+
+		
+		// SUB-MENU //
+
+		itemDef {
+			name refreshSource
+			type ITEM_TYPE_BUTTON
+			style WINDOW_STYLE_FILLED
+			rect 20 364 100 25
+			backcolor .03 .03 .4 .6
+			text "REFRESH LIST"
+			textstyle 0
+			textalignx 15
+			textaligny 17
+			textscale .21
+			forecolor 1 1 1 .7
+			visible 1
+			mouseEnter { setcolor backcolor 0 0 0 .1}
+			mouseExit { setcolor backcolor .03 .03 .4 .6 ; setfocus loginoptiontext }
+			action { play "sound/misc/kcaction.wav" ; uiScript RefreshServers }
+		}
+		itemDef {
+			name SourceType
+			type ITEM_TYPE_BUTTON
+			style WINDOW_STYLE_FILLED
+			ownerdraw UI_NETSOURCE
+			textstyle 0
+			textalign 2
+			textalignx 10
+			textaligny 17
+			textscale .21
+			forecolor 1 1 1 1
+			rect 120 364 100 25
+			backcolor 0 0 0 .5
+			forecolor 1 1 1 .7
+			visible 1
+			mouseEnter { setcolor backcolor 0 0 0 .1}
+			mouseExit { setcolor backcolor 0 0 0 .5; setfocus loginoptiontext}
+			action { play "sound/misc/kcaction.wav" }
+		}
+		itemDef {
+			name addFavorite
+			type ITEM_TYPE_BUTTON
+			style WINDOW_STYLE_FILLED
+			ownerdrawFlag UI_SHOW_NOTFAVORITESERVERS
+			rect 420 364 100 25
+			backcolor 0 0 0 .3
+			visible 1
+			text "ADD TO FAV."
+			textstyle 0
+			textalignx 19
+			textaligny 17
+			textscale .21
+			forecolor 1 1 1 .7
+			action { play "sound/misc/kcaction.wav" ; uiScript addFavorite ;}
+			mouseEnter { setcolor backcolor 0 0 0 .1}
+			mouseExit { setcolor backcolor 0 0 0 .3}
+		}
+		itemDef {
+			name password
+			type ITEM_TYPE_BUTTON
+			style WINDOW_STYLE_FILLED
+			rect 320 364 100 25
+			backcolor 0 0 0 .3
+			visible 1
+			text "SET PASSWORD"
+			textstyle 0
+			textalignx 12
+			textaligny 17
+			textscale .21
+			forecolor 1 1 1 .7
+			action { play "sound/misc/kcaction.wav" ; 
+				open password_popmenu }
+			mouseEnter { setcolor backcolor 0 0 0 .1}
+			mouseExit { setcolor backcolor 0 0 0 .3}
+		}
+		itemDef {
+			name serverinfo
+			type ITEM_TYPE_BUTTON
+			style WINDOW_STYLE_FILLED
+			rect 220 364 100 25
+			backcolor 0 0 0 .3
+			visible 1
+			text "SERVER INFO"
+			textstyle 0
+			textalignx 17
+			textaligny 17
+			textscale .21
+			forecolor 1 1 1 .7
+			action { play "sound/misc/kcaction.wav" ;open serverinfo_popmenu }
+			mouseEnter { setcolor backcolor 0 0 0 .1}
+			mouseExit { setcolor backcolor 0 0 0 .3}
+		}
+		itemDef {
+			name findplayer
+			type ITEM_TYPE_BUTTON
+			style WINDOW_STYLE_FILLED
+			ownerdrawFlag UI_SHOW_NOTFAVORITESERVERS
+			rect 520 364 100 25
+			backcolor 0 0 0 .3
+			text "FIND FRIEND"
+			textstyle 0
+			textalignx 18
+			textaligny 17
+			textscale .21
+			forecolor 1 1 1 .7
+			visible 1 
+			action { play "sound/misc/kcaction.wav" ; open findplayer_popmenu }
+			mouseEnter { setcolor backcolor 0 0 0 .1}
+			mouseExit { setcolor backcolor 0 0 0 .3 }
+		}
+		itemDef {
+			name createFavorite
+			type ITEM_TYPE_BUTTON
+			style WINDOW_STYLE_FILLED
+			rect 420 364 100 25
+			ownerdrawFlag UI_SHOW_FAVORITESERVERS
+			backcolor 0 0 0 .3
+			visible 1
+			text "CREATE FAV."
+			textstyle 0
+			textalignx 19
+			textaligny 17
+			textscale .21
+			forecolor 1 1 1 .7
+			action { play "sound/misc/kcaction.wav" ; 
+				open createfavorite_popmenu }
+			mouseEnter { setcolor backcolor 0 0 0 .1}
+			mouseExit { setcolor backcolor 0 0 0 .3}
+		}
+		itemDef {
+			name delfavorite
+			type ITEM_TYPE_BUTTON
+			style WINDOW_STYLE_FILLED
+			ownerdrawFlag UI_SHOW_FAVORITESERVERS
+			rect 520 364 100 25
+			backcolor 0 0 0 .3
+			visible 1
+			text "DELETE FAV."
+			textstyle 0
+			textalignx 19
+			textaligny 17
+			textscale .21
+			forecolor 1 1 1 .7
+			action { play "sound/misc/kcaction.wav" ; 
+				uiScript DeleteFavorite ; uiScript UpdateFilter }
+			mouseEnter { setcolor backcolor 0 0 0 .1}
+			mouseExit { setcolor backcolor 0 0 0 .3 }
+		}
+
+		itemDef {
+			name startserver
+			type ITEM_TYPE_BUTTON
+			style WINDOW_STYLE_FILLED
+			rect 560 10 70 50
+			backcolor .4 .4 .4 .1
+			border 1
+			bordercolor .5 .5 .5 0.15
+			bordersize 1
+			text "StartServer"
+			textstyle 0
+			textalignx 4
+			textaligny 30
+			textscale .23
+			forecolor 1 1 1 .7
+			visible 1
+			mouseEnter { setcolor backcolor .03 .03 .4 .6}
+			mouseExit { setcolor backcolor .4 .4 .4 .1 ; setfocus loginoptiontext }
+			action { play "sound/misc/kcaction.wav" ; close joinserver ; open createserver  }
+		}
+		
+		//	FILTERS	//
+
+		itemDef {
+			name filterfield
+			rect 30 390 118 19
+			style WINDOW_STYLE_FILLED
+			textscale .18
+			textalign ITEM_ALIGN_LEFT
+			textalignx 5
+			textaligny 13
+			maxchars 14
+			type ITEM_TYPE_EDITFIELD
+			cvar "ui_filtertext"
+			text ""
+			forecolor 1 1 1 .6
+			visible 1
+		}
+		itemDef {
+			name filterfieldback
+			rect 30 393 118 13
+			style WINDOW_STYLE_FILLED
+			backcolor 0	0 0 .2
+			visible 1
+			decoration
+		}
+		itemDef {
+			name filterclear
+			cvartest "ui_filtertext"
+			hideCvar { "" }
+			rect 148 393 12 13
+			style WINDOW_STYLE_FILLED
+			textscale .18
+			text "x"
+			backcolor 0 0 0 .2
+			textalign ITEM_ALIGN_LEFT
+			textalignx 4
+			textaligny 9
+			type ITEM_TYPE_BUTTON
+			forecolor 1 1 1 .6
+			visible 1
+			action { play "sound/misc/kcaction.wav"; clearcvar ui_filterText }
+			mouseEnter { setcolor backcolor 0 0 0 .3 }
+			mouseExit { setcolor backcolor 0 0 0 .2 }
+		}
+		itemDef {
+			name filtertext
+			text "SHOW"
+			textscale .18
+			textstyle 0
+			textalignx 15
+			textaligny 13
+			style 1
+			rect 170 390 150 19
+			forecolor .5 .5 .5 .7
+			visible 1
+			decoration
+		}
+		itemDef {
+			name viewFull
+			cvartest "ui_browserShowFull"
+			hideCvar { "0" }
+			type ITEM_TYPE_MULTI
+			text "Full"
+			cvar "ui_browserShowFull"
+			cvarfloatlist { "" 0 "" 1 }
+			textscale .18
+			rect 225 390 25 19
+			textalignx 3
+			textaligny 13
+			backcolor 0 0 0 0
+			forecolor .6 .6 .6 1
+			visible 1 
+			action { uiScript RefreshFilter ; 
+				play "sound/misc/kcaction.wav" }
+			mouseEnter { setitemcolor backcolor 1.0 0.55 0.0 1 }
+			mouseExit { setitemcolor backcolor 0 0 0 0 }
+		}
+		itemDef {
+			name viewFull
+			cvartest "ui_browserShowFull"
+			hideCvar { "1" }
+			type ITEM_TYPE_MULTI
+			text "Full"
+			cvar "ui_browserShowFull"
+			cvarfloatlist { "" 0 "" 1 }
+			textscale .18
+			rect 225 390 25 19
+			textalignx 3
+			textaligny 13
+			backcolor 0 0 0 0
+			forecolor .6 .6 .6 .5
+			visible 1 
+			action { uiScript RefreshFilter ; 
+				play "sound/misc/kcaction.wav" }
+			mouseEnter { setitemcolor backcolor 1.0 0.55 0.0 1 }
+			mouseExit { setitemcolor backcolor 0 0 0 0 }
+		}
+		itemDef {
+			name viewEmpty
+			cvartest "ui_browserShowEmpty"
+			hideCvar { "0" }
+			type ITEM_TYPE_MULTI
+			text "Empty"
+			cvar "ui_browserShowEmpty"
+			cvarfloatlist { "" 0 "" 1 }
+			textscale .18
+			rect 251 390 30 19
+			textalignx 3
+			textaligny 13
+			forecolor .6 .6 .6 1
+			visible 1
+			action { play "sound/misc/kcaction.wav" ; uiScript RefreshFilter }
+		}
+		itemDef {
+			name viewEmpty
+			cvartest "ui_browserShowEmpty"
+			hideCvar { "1" }
+			type ITEM_TYPE_MULTI
+			text "Empty"
+			cvar "ui_browserShowEmpty"
+			cvarfloatlist { "" 0 "" 1 }
+			textscale .18
+			rect 251 390 30 19
+			textalignx 3
+			textaligny 13
+			forecolor .6 .6 .6 .5
+			visible 1
+			action { play "sound/misc/kcaction.wav" ; uiScript RefreshFilter }
+		}
+		itemDef {
+			name viewEmpty
+			cvartest "ui_browserShowBots"
+			hideCvar { "0" }
+			type ITEM_TYPE_MULTI
+			text "Bots"
+			cvar "ui_browserShowBots"
+			cvarfloatlist { "" 0 "" 1 }
+			textscale .18
+			rect 286 390 25 19
+			textalignx 3
+			textaligny 13
+			forecolor .6 .6 .6 1
+			visible 1
+			action { play "sound/misc/kcaction.wav" ; uiScript RefreshFilter }
+		}
+		itemDef {
+			name viewEmpty
+			cvartest "ui_browserShowBots"
+			hideCvar { "1" }
+			type ITEM_TYPE_MULTI
+			text "Bots"
+			cvar "ui_browserShowBots"
+			cvarfloatlist { "" 0 "" 1 }
+			textscale .18
+			rect 286 390 25 19
+			textalignx 3
+			textaligny 13
+			forecolor .6 .6 .6 .5
+			visible 1
+			action { play "sound/misc/kcaction.wav" ; uiScript RefreshFilter }
+		}
+		itemDef {
+			name viewAccounts
+			type ITEM_TYPE_MULTI
+			text "Accounts:"
+			cvar "ui_browserShowAccounts"
+			cvarfloatlist { "All" 0 "Yes" 1 "No" 2 }
+			textscale .18
+			rect 320 390 75 19
+			textalignx 15
+			textaligny 13
+			backcolor 0 0 0 0
+			forecolor .6 .6 .6 1
+			visible 1 
+			action { uiScript RefreshFilter ; 
+				play "sound/misc/kcaction.wav" }
+			mouseEnter { setitemcolor backcolor 1.0 0.55 0.0 1 }
+			mouseExit { setitemcolor backcolor 0 0 0 0 }
+		}
+		itemDef {
+			name viewBE
+			type ITEM_TYPE_MULTI
+			text "Private:"
+			cvar "ui_browserShowPrivate"
+			cvarfloatlist { "All" 0 "No" 1 "Yes" 2 }
+			textscale .18
+			rect 408 390 80 19
+			textalignx 12
+			textaligny 13
+			backcolor 0 0 0 0
+			forecolor 1 1 1 .6
+			visible 1 
+			action { uiScript RefreshFilter ; 
+				play "sound/misc/kcaction.wav" }
+			mouseEnter { setitemcolor backcolor 1.0 0.55 0.0 1 }
+			mouseExit { setitemcolor backcolor 0 0 0 0 }
+		}
+		itemDef {
+			name gametypefield
+			textstyle 0
+			style WINDOW_STYLE_FILLED
+			backcolor 0 0 0 0
+			text "Type:"
+			ownerdraw UI_JOINGAMETYPE
+			rect 480 390 100 19
+			textalignx 16
+			textaligny 13
+			textscale .18
+			forecolor .6 .6 .6 1
+			visible 1 
+			action { play "sound/misc/kcaction.wav" }
+		}
+		itemDef {
+			name fullline
+			cvartest "ui_browserShowFull"
+			hideCvar { "1" }
+			rect 227 400 16 1
+			style WINDOW_STYLE_FILLED
+			backcolor .6 .6 .6 .2
+			visible 1
+			decoration
+		}
+		itemDef {
+			name emptyline
+			cvartest "ui_browserShowEmpty"
+			hideCvar { "1" }
+			rect 253 400 27 1
+			style WINDOW_STYLE_FILLED
+			backcolor .6 .6 .6 .2
+			visible 1
+			decoration
+		}
+		itemDef {
+			name botsline
+			cvartest "ui_browserShowBots"
+			hideCvar { "1" }
+			rect 288 400 19 1
+			style WINDOW_STYLE_FILLED
+			backcolor .6 .6 .6 .2
+			visible 1
+			decoration
+		}
+
+
+		// BACK //
+		
+		itemDef {
+			name back
+			style 3
+			background "ui/assets/backarrow.tga"
+			rect 20 426 32 32
+			visible 1
+			mouseEnter { hide back ; show back_on }
+		}
+
+		itemDef {
+			name back_on
+			style WINDOW_STYLE_SHADER
+			background "ui/assets/backarrow_on.tga"
+			rect 20 426 32 32
+			//backcolor 0 0 0 0
+			forecolor 1 1 1 1
+			visible 0
+			type ITEM_TYPE_BUTTON
+			mouseExit { hide back_on ; show back }
+			action { play "sound/misc/kcaction.wav" ; close joinserver ; open main }
+		}
+
+		itemDef {
+			name back_text
+			group grpControlbutton
+			text "Back"
+			textscale .25
+			textalignx 11
+			textaligny 12
+			rect 11 462 60 20
+			style 1
+			//border 1
+			//bordercolor .5 .5 .5 1
+			forecolor 1 1 1 1
+			//backcolor 0 0 0 .65
+			visible 1
+			decoration
+		}
+
+
+		// ACCEPT //
+		
+		itemDef {
+			name accept
+			style 3
+			background "ui/assets/acceptarrow.tga"
+			rect 584 426 32 32
+			visible 1
+			mouseEnter { hide accept ; show accept_on }
+		}
+
+		itemDef {
+			name accept_on
+			style WINDOW_STYLE_SHADER
+			background "ui/assets/acceptarrow_on.tga"
+			rect 584 426 32 32
+			//backcolor 0 0 0 0
+			forecolor 1 1 1 1
+			visible 0
+			type ITEM_TYPE_BUTTON
+			mouseExit { hide accept_on ; show accept }
+			action { play "sound/misc/kcaction.wav" ; uiScript JoinServer }
+		}
+
+		itemDef {
+			name accept_text
+			group grpControlbutton
+			text "Connect"
+			textscale .25
+			textalignx 11
+			textaligny 12
+			rect 567 462 60 20
+			style 1
+			//border 1
+			//bordercolor .5 .5 .5 1
+			forecolor 1 1 1 1
+			//backcolor 0 0 0 .65
+			visible 1
+			decoration
+		}
+
+	}
+}

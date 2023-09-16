@@ -1,0 +1,136 @@
+#include "ui/menudef.h"
+
+{
+\\ CREATE FAVORITE POPUP MENU \\
+
+menuDef {
+    	name "createfavorite_popmenu"
+    	visible 0
+    	fullscreen 0
+	rect 160 185 320 110
+	focusColor 1 1 1 1
+    	style 1
+	popup
+	onopen { setfocus nameEntry }
+	onESC { close createfavorite_popmenu }
+
+  	itemDef {
+		name createfav
+		rect 0 0 320 19
+		style 1	
+		text "CREATE A FAVORITE" 
+		textalign 1
+		textstyle 0
+		textscale .22
+		textalignx 160
+		textaligny 13
+		forecolor 1 1 1 .75
+		backcolor .02 .02 .2 1
+		visible 1
+		decoration
+		}
+
+
+
+
+
+	
+itemDef {
+	name nameEntry
+	style 1
+	maxchars 15
+	text "NAME > "
+	textscale .23
+	TYPE 4
+	cvar "ui_favoriteName"
+	rect 0 20 240 25
+	textalign 0
+	textalignx 10
+	textaligny 20
+	forecolor 1 1 1 .65
+	backcolor 0 0 0 1
+	visible 1
+	}
+
+itemDef {
+	name addressEntry
+	style 1
+	maxchars 21
+	maxPaintChars 21
+	text "IP ADRESS > "
+	textscale .23
+	TYPE 4
+	cvar "ui_favoriteAddress"
+	rect 0 45 240 25
+	textalign 0
+	textalignx 10
+	textaligny 13
+	forecolor 1 1 1 .65
+	backcolor 0 0 0 1
+	visible 1
+	}
+
+	itemDef {
+		name back
+		type 0
+		rect 240 20 80 50
+		style 1
+		border 0
+		backcolor 0 0 0 1
+		visible 1
+		decoration
+	}
+
+
+	
+	itemDef {
+	name yes
+	type 1
+	text "ACCEPT"
+	textalign 0
+	textalignx 18
+	textaligny 17
+	textscale .23
+	style WINDOW_STYLE_FILLED
+	rect 240 20 80 25
+	forecolor 1 1 1 .65
+	backcolor 0 0 0 .3
+	border 0
+	bordercolor .5 .5 .5 1
+	visible 1
+	action { play "sound/misc/kcaction.wav" ;
+	uiScript CreateFavorite ; 
+	uiScript UpdateFilter ;
+	close createfavorite_popmenu ; open joinserver}
+	mouseEnter { setitemcolor yes backcolor 0 0 .55 .5 } 
+	mouseExit { setitemcolor yes backcolor 0 0 0 .3 } 	
+	}
+
+
+
+
+itemDef {
+	name no
+	type 1
+	text "CANCEL"
+	textalign 0
+	textalignx 18
+	textaligny 17
+	textscale .23
+	style WINDOW_STYLE_FILLED
+	rect 240 45 80 25
+	forecolor 1 1 1 .65
+	backcolor 0 0 0 .3
+	border 0
+	bordercolor .5 .5 .5 1
+	visible 1
+	action { play "sound/misc/kcaction.wav" ;
+	close createfavorite_popmenu ; open joinserver}
+	mouseEnter { setitemcolor no backcolor 0 0 .55 .5 } 
+	mouseExit { setitemcolor no backcolor 0 0 0 .3 } 	
+	}
+
+
+}
+}
+}

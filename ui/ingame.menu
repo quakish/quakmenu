@@ -1,0 +1,946 @@
+#include "ui/menudef.h"
+{
+
+	/*	INGAME_SELECT_TEAM
+	Revised by woekele, for 4.0. Slight adjustments, nothing big.
+	*/
+
+	assetGlobalDef {
+		font "fonts/fontImage_40" 40
+		smallFont "fonts/fontImage_30" 30
+		bigFont "fonts/fontImage_50" 50
+
+		cursor "ui/assets/3_cursor3"			// cursor
+		itemFocusSound "sound/misc/menu2.wav"		// sound for item getting focus (via keyboard or mouse )
+
+		fadeClamp 1.0					// sets the fadeup alpha
+		fadeCycle 1					// how often fade happens in milliseconds
+		fadeAmount 0.1					// amount to adjust alpha per cycle
+
+		shadowColor 0.1 0.1 0.1 0.25			// shadow color
+	}
+
+
+
+	\\ INGAME MENU \\
+
+	menuDef {
+		name "ingame"
+		visible 0
+		fullScreen 0
+		//outOfBoundsClick			// this closes the window if it gets a click out of the rectangle
+		rect 0 0 640 480
+		focusColor 1 1 1 1
+		disableColor .5 .5 .5 1
+
+		itemdef {
+			name background
+			rect -2 -2 644 45
+			//style WINDOW_STYLE_SHADER
+			//background "ui/assets/ingame_bg_tr.tga"
+			style  1
+			backcolor .01 .01 .05 .8
+			border 1
+			bordercolor .5 .5 .5 0.4
+			visible 1
+			decoration
+		}
+
+		itemDef {
+			name ut_logo_graphic
+			style WINDOW_STYLE_SHADER
+			background "ui/assets/utlogo.tga"
+			rect 519 4 118 30
+			visible 1
+			decoration
+		}
+
+
+		//  BUTTONS	//
+
+
+		itemdef {
+			name about
+			rect 16 12 50 20
+			type 1
+			style WINDOW_STYLE_FILLED
+			forecolor 1 1 1 1
+			backcolor 0 0 0 .8
+			border 1
+			bordercolor .4 .4 .4 .3
+			visible 1
+			action { play "sound/misc/kcaction.wav" ; open ingame_about }
+			mouseEnter { setcolor backcolor 0 0 .55 1}
+			mouseExit { setcolor backcolor 0 0 0 .8 }
+		}
+
+
+
+		itemDef {
+			name player
+			type 1
+			style WINDOW_STYLE_FILLED
+			rect 72 12 50 20
+			forecolor 1 1 1 1
+			backcolor 0 0 0 .8
+			border 1
+			bordercolor .4 .4 .4 .3
+			visible 1
+			action { play "sound/misc/kcaction.wav" ; open ingame_player }
+			mouseEnter { setcolor backcolor 0 0 .55 1}
+			mouseExit { setcolor backcolor 0 0 0 .8 }
+		}
+
+
+		itemDef {
+			name servers
+			type 1
+			style WINDOW_STYLE_FILLED
+			rect 128 12 50 20
+			forecolor 1 1 1 1
+			backcolor 0 0 0 .8
+			border 1
+			bordercolor .4 .4 .4 .3
+			visible 1
+			action { play "sound/misc/kcaction.wav" ; open ingame_joinserver }
+			mouseEnter { setcolor backcolor 0 0 .55 1}
+			mouseExit { setcolor backcolor 0 0 0 .8 }
+		}
+
+
+
+		itemDef {
+			name controls
+			type 1
+			style WINDOW_STYLE_FILLED
+			rect 184 12 50 20
+			forecolor 1 1 1 1
+			backcolor 0 0 0 .8
+			border 1
+			bordercolor .4 .4 .4 .3
+			visible 1
+			action { play "sound/misc/kcaction.wav" ; open ingame_controls }
+			mouseEnter { setcolor backcolor 0 0 .55 1}
+			mouseExit { setcolor backcolor 0 0 0 .8 }
+		}
+
+
+		itemDef {
+			name options
+			type 1
+			style WINDOW_STYLE_FILLED
+			rect 240 12 50 20
+			forecolor 1 1 1 1
+			backcolor 0 0 0 .8
+			border 1
+			bordercolor .4 .4 .4 .3
+			visible 1
+			action { play "sound/misc/kcaction.wav" ; open ingame_options }
+			mouseEnter { setcolor backcolor 0 0 .55 1}
+			mouseExit { setcolor backcolor 0 0 0 .8 }
+		}
+
+
+		itemDef {
+			name system
+			type 1
+			style WINDOW_STYLE_FILLED
+			rect 296 12 50 20
+			forecolor 1 1 1 1
+			backcolor 0 0 0 .8
+			border 1
+			bordercolor .4 .4 .4 .3
+			visible 1
+			action { play "sound/misc/kcaction.wav" ; open ingame_system }
+			//action { play "sound/misc/kcaction.wav" ; exec devmap mapname } //TEST
+			mouseEnter { setcolor backcolor 0 0 .55 1}
+			mouseExit { setcolor backcolor 0 0 0 .8 }
+		}
+
+
+		itemDef {
+			name callvote
+			type 1
+			style WINDOW_STYLE_FILLED
+			rect 352 12 50 20
+			forecolor 1 1 1 1
+			backcolor 0 0 0 .8
+			border 1
+			bordercolor .4 .4 .4 .3
+			visible 1
+			action { play "sound/misc/kcaction.wav" ; open ingame_extra }
+			//action { play "sound/misc/kcaction.wav" ; exec "devmap UI_MAPS_SELECTION" } //TEST
+			mouseEnter { setcolor backcolor 0 0 .55 1}
+			mouseExit { setcolor backcolor 0 0 0 .8 }
+		}
+
+
+		itemDef {
+			name console
+			type 1
+			style WINDOW_STYLE_FILLED
+			rect 408 12 50 20
+			forecolor 1 1 1 1
+			backcolor 0 0 0 .8
+			border 1
+			bordercolor .4 .4 .4 .3
+			visible 1
+			action { play "sound/misc/kcaction.wav" ; exec "toggleconsole" }
+			mouseEnter { setcolor backcolor 0 0 .55 1}
+			mouseExit { setcolor backcolor 0 0 0 .8 }
+		}
+
+
+		itemDef {
+			name leave
+			type 1
+			style WINDOW_STYLE_FILLED
+			rect 464 12 50 20
+			forecolor 1 1 1 1
+			backcolor 0 0 0 .8
+			border 1
+			bordercolor .4 .4 .4 .3
+			visible 1
+			action { play "sound/misc/kcaction.wav" ; open ingame_leave }
+			mouseEnter { setcolor backcolor 0 0 .55 1}
+			mouseExit { setcolor backcolor 0 0 0 .8 }
+		}
+
+		//  TEXT	//
+
+
+		itemdef {
+			name about
+			text "Info"
+			rect 16 12 50 20
+			type 0
+			style WINDOW_STYLE_FILLED
+			textalign 2
+			textalignx 46
+			textaligny 16
+			textscale .22
+			forecolor 1 1 1 1
+			backcolor 0 0 0 0
+			border 1
+			bordercolor .4 .4 .4 .3
+			visible 1
+			decoration
+		}
+
+
+
+		itemDef {
+			name player
+			text "Player"
+			style WINDOW_STYLE_FILLED
+			rect 72 12 50 20
+			type 0
+			textalign 2
+			textalignx 46
+			textaligny 16
+			textscale .22
+			forecolor 1 1 1 1
+			backcolor 0 0 0 0
+			border 1
+			bordercolor .4 .4 .4 .3
+			visible 1
+			decoration
+		}
+
+
+
+		itemDef {
+			name servers
+			text "Servers"
+			style WINDOW_STYLE_FILLED
+			rect 128 12 50 20
+			type 0
+			textalign 2
+			textalignx 46
+			textaligny 16
+			textscale .22
+			forecolor 1 1 1 1
+			backcolor 0 0 0 0
+			border 1
+			bordercolor .4 .4 .4 .3
+			visible 1
+			decoration
+		}
+
+
+		itemDef {
+			name controls
+			text "Controls"
+			style WINDOW_STYLE_FILLED
+			rect 184 12 50 20
+			type 0
+			textalign 2
+			textalignx 46
+			textaligny 16
+			textscale .22
+			forecolor 1 1 1 1
+			backcolor 0 0 0 0
+			border 1
+			bordercolor .4 .4 .4 .3
+			visible 1
+			decoration
+		}
+
+
+		itemDef {
+			name options
+			text "Options"
+			style WINDOW_STYLE_FILLED
+			rect 240 12 50 20
+			type 0
+			textalign 2
+			textalignx 46
+			textaligny 16
+			textscale .22
+			forecolor 1 1 1 1
+			backcolor 0 0 0 0
+			border 1
+			bordercolor .4 .4 .4 .3
+			visible 1
+			decoration
+		}
+
+
+		itemDef {
+			name system
+			text "System"
+			style WINDOW_STYLE_FILLED
+			rect 296 12 50 20
+			type 0
+			textalign 2
+			textalignx 46
+			textaligny 16
+			textscale .22
+			forecolor 1 1 1 1
+			backcolor 0 0 0 0
+			border 1
+			bordercolor .4 .4 .4 .3
+			visible 1
+			decoration
+		}
+
+		itemDef {
+			name callvote
+			text "Extra"
+			style WINDOW_STYLE_FILLED
+			rect 352 12 50 20
+			type 0
+			textalign 2
+			textalignx 46
+			textaligny 16
+			textscale .22
+			forecolor 1 1 1 1
+			backcolor 0 0 0 0
+			border 1
+			bordercolor .4 .4 .4 .3
+			visible 1
+			decoration
+		}
+
+
+		itemDef {
+			name console
+			text "Console"
+			style WINDOW_STYLE_FILLED
+			rect 408 12 50 20
+			type 0
+			textalign 2
+			textalignx 46
+			textaligny 16
+			textscale .22
+			forecolor 1 1 1 1
+			backcolor 0 0 0 0
+			border 1
+			bordercolor .4 .4 .4 .3
+			visible 1
+			decoration
+		}
+
+
+		itemDef {
+			name leave
+			text "Exit"
+			style WINDOW_STYLE_FILLED
+			rect 464 12 50 20
+			type 0
+			textalign 2
+			textalignx 46
+			textaligny 16
+			textscale .22
+			forecolor 1 1 1 1
+			backcolor 0 0 0 0
+			border 1
+			bordercolor .4 .4 .4 .3
+			visible 1
+			decoration
+		}
+		
+		//map checks - Will implement as adition later
+		/*
+		itemDef {
+			cvartest mapname
+			showcvar { "utj_yellow" }
+			name mapcheck
+			rect 0 0 640 480
+			style 0
+			border 0
+			backcolor 0 0 0 0
+			border 1
+			bordercolor 0 0 0 0 
+			visible 1
+			mouseEnter {setcvar menu_mapback "yellow" ; hide mapcheck }
+		}
+
+		itemDef {
+			cvartest mapname
+			showcvar { "ut43_red_b1" }
+			name mapcheck
+			rect 0 0 640 480
+			style 0
+			border 0
+			backcolor 0 0 0 0
+			border 1
+			bordercolor 0 0 0 0 
+			visible 1
+			mouseEnter {setcvar menu_mapback "red" ; hide mapcheck }
+		}
+
+		itemDef {
+			cvartest mapname
+			showcvar { "ut4_xmasjumps_b1" }
+			name mapcheck
+			rect 0 0 640 480
+			style 0
+			border 0
+			backcolor 0 0 0 0
+			border 1
+			bordercolor 0 0 0 0 
+			visible 1
+			mouseEnter {setcvar menu_mapback "xmas" ; hide mapcheck }
+		}
+
+		itemDef {
+			cvartest mapname
+			showcvar { "ut43_vertigo_b1" ; "ut4_vertigo_b1" }
+			name mapcheck
+			rect 0 0 640 480
+			style 0
+			border 0
+			backcolor 0 0 0 0
+			border 1
+			bordercolor 0 0 0 0 
+			visible 1
+			mouseEnter {setcvar menu_mapback "vertigo" ; hide mapcheck }
+		}
+		
+		itemDef {
+			cvartest mapname
+			showcvar { "ut43_unimpossible_v4" ; "ut43_unimpossible_v3" ; "ut43_unimpossible_v5" }
+			name mapcheck
+			rect 0 0 640 480
+			style 0
+			border 0
+			backcolor 0 0 0 0
+			border 1
+			bordercolor 0 0 0 0 
+			visible 1
+			mouseEnter {setcvar menu_mapback "unim" ; hide mapcheck }
+		}
+		
+		itemDef {
+			cvartest mapname
+			showcvar { "ut4_underworld_b1" }
+			name mapcheck
+			rect 0 0 640 480
+			style 0
+			border 0
+			backcolor 0 0 0 0
+			border 1
+			bordercolor 0 0 0 0 
+			visible 1
+			mouseEnter {setcvar menu_mapback "underworld" ; hide mapcheck }
+		}
+		
+		itemDef {
+			cvartest mapname
+			showcvar { "ut43_tuesdayquaks_v2" ; "ut43_tuesdayquaks" }
+			name mapcheck
+			rect 0 0 640 480
+			style 0
+			border 0
+			backcolor 0 0 0 0
+			border 1
+			bordercolor 0 0 0 0 
+			visible 1
+			mouseEnter {setcvar menu_mapback "tuesday" ; hide mapcheck }
+		}
+		
+		itemDef {
+			cvartest mapname
+			showcvar { "ut43_quakppytowers01_b1b" ; "ut43_quakppytowers01_b1" }
+			name mapcheck
+			rect 0 0 640 480
+			style 0
+			border 0
+			backcolor 0 0 0 0
+			border 1
+			bordercolor 0 0 0 0 
+			visible 1
+			mouseEnter {setcvar menu_mapback "tower" ; hide mapcheck }
+		}
+		
+		itemDef {
+			cvartest mapname
+			showcvar { "ut4_tears_b1" }
+			name mapcheck
+			rect 0 0 640 480
+			style 0
+			border 0
+			backcolor 0 0 0 0
+			border 1
+			bordercolor 0 0 0 0 
+			visible 1
+			mouseEnter {setcvar menu_mapback "tears" ; hide mapcheck }
+		}
+		
+		itemDef {
+			cvartest mapname
+			showcvar { "ut43_skome_b1" ; "ut43_skome_a3" }
+			name mapcheck
+			rect 0 0 640 480
+			style 0
+			border 0
+			backcolor 0 0 0 0
+			border 1
+			bordercolor 0 0 0 0 
+			visible 1
+			mouseEnter {setcvar menu_mapback "skome" ; hide mapcheck }
+		}
+
+		itemDef {
+			cvartest mapname
+			showcvar { "ut43_prison" }
+			name mapcheck
+			rect 0 0 640 480
+			style 0
+			border 0
+			backcolor 0 0 0 0
+			border 1
+			bordercolor 0 0 0 0 
+			visible 1
+			mouseEnter {setcvar menu_mapback "prison" ; hide mapcheck }
+		}
+
+		itemDef {
+			cvartest mapname
+			showcvar { "ut43_quak-journey1_b1" }
+			name mapcheck
+			rect 0 0 640 480
+			style 0
+			border 0
+			backcolor 0 0 0 0
+			border 1
+			bordercolor 0 0 0 0 
+			visible 1
+			mouseEnter {setcvar menu_mapback "qj1" ; hide mapcheck }
+		}
+
+		itemDef {
+			cvartest mapname
+			showcvar { "ut43_quak-journey2_b1" }
+			name mapcheck
+			rect 0 0 640 480
+			style 0
+			border 0
+			backcolor 0 0 0 0
+			border 1
+			bordercolor 0 0 0 0 
+			visible 1
+			mouseEnter {setcvar menu_mapback "qj2" ; hide mapcheck }
+		}
+
+		itemDef {
+			cvartest mapname
+			showcvar { "ut43_quak-journey3_b1" }
+			name mapcheck
+			rect 0 0 640 480
+			style 0
+			border 0
+			backcolor 0 0 0 0
+			border 1
+			bordercolor 0 0 0 0 
+			visible 1
+			mouseEnter {setcvar menu_mapback "qj3" ; hide mapcheck }
+		}
+
+		itemDef {
+			cvartest mapname
+			showcvar { "ut43_quak-journey4_b1" }
+			name mapcheck
+			rect 0 0 640 480
+			style 0
+			border 0
+			backcolor 0 0 0 0
+			border 1
+			bordercolor 0 0 0 0 
+			visible 1
+			mouseEnter {setcvar menu_mapback "qj4" ; hide mapcheck }
+		}
+
+		itemDef {
+			cvartest mapname
+			showcvar { "ut43_quak-journey0_b1" }
+			name mapcheck
+			rect 0 0 640 480
+			style 0
+			border 0
+			backcolor 0 0 0 0
+			border 1
+			bordercolor 0 0 0 0 
+			visible 1
+			mouseEnter {setcvar menu_mapback "qj0" ; hide mapcheck }
+		}
+
+		itemDef {
+			cvartest mapname
+			showcvar { "ut4_gammajumps2_b1" }
+			name mapcheck
+			rect 0 0 640 480
+			style 0
+			border 0
+			backcolor 0 0 0 0
+			border 1
+			bordercolor 0 0 0 0 
+			visible 1
+			mouseEnter {setcvar menu_mapback "gamma2" ; hide mapcheck }
+		}
+
+		itemDef {
+			cvartest mapname
+			showcvar { "ut42_jupiter" }
+			name mapcheck
+			rect 0 0 640 480
+			style 0
+			border 0
+			backcolor 0 0 0 0
+			border 1
+			bordercolor 0 0 0 0 
+			visible 1
+			mouseEnter {setcvar menu_mapback "jupiter" ; hide mapcheck }
+		}
+
+		itemDef {
+			cvartest mapname
+			showcvar { "ut4_melodrama_b2" }
+			name mapcheck
+			rect 0 0 640 480
+			style 0
+			border 0
+			backcolor 0 0 0 0
+			border 1
+			bordercolor 0 0 0 0 
+			visible 1
+			mouseEnter {setcvar menu_mapback "melo" ; hide mapcheck }
+		}
+
+		itemDef {
+			cvartest mapname
+			showcvar { "ut4_overworked_b1" }
+			name mapcheck
+			rect 0 0 640 480
+			style 0
+			border 0
+			backcolor 0 0 0 0
+			border 1
+			bordercolor 0 0 0 0 
+			visible 1
+			mouseEnter {setcvar menu_mapback "overworked" ; hide mapcheck }
+		}
+
+		itemDef {
+			cvartest mapname
+			showcvar { "ut4_saturn_beta1" ; "ut4_saturn_beta2" ; "ut43_saturn_beta1" ; "ut43_saturn_beta2"}
+			name mapcheck
+			rect 0 0 640 480
+			style 0
+			border 0
+			backcolor 0 0 0 0
+			border 1
+			bordercolor 0 0 0 0 
+			visible 1
+			mouseEnter {setcvar menu_mapback "saturn" ; hide mapcheck }
+		}
+
+		itemDef {
+			cvartest mapname
+			showcvar { "ut43_pixel_b2" ; "ut43_pixel_b1" }
+			name mapcheck
+			rect 0 0 640 480
+			style 0
+			border 0
+			backcolor 0 0 0 0
+			border 1
+			bordercolor 0 0 0 0 
+			visible 1
+			mouseEnter {setcvar menu_mapback "pixle" ; hide mapcheck }
+		}
+
+		itemDef {
+			cvartest mapname
+			showcvar { "ut43_blue_b2" }
+			name mapcheck
+			rect 0 0 640 480
+			style 0
+			border 0
+			backcolor 0 0 0 0
+			border 1
+			bordercolor 0 0 0 0 
+			visible 1
+			mouseEnter {setcvar menu_mapback "blue" ; hide mapcheck }
+		}
+
+		itemDef {
+			cvartest mapname
+			showcvar { "ut4_darksequel_b2" ; "ut43_darksequel_b2" }
+			name mapcheck
+			rect 0 0 640 480
+			style 0
+			border 0
+			backcolor 0 0 0 0
+			border 1
+			bordercolor 0 0 0 0 
+			visible 1
+			mouseEnter {setcvar menu_mapback "darkseq" ; hide mapcheck }
+		}
+
+		itemDef {
+			cvartest mapname
+			showcvar { "ut43_quakded_b3" ; "ut43_quakded_b2" ; "ut43_quakshot05-ded1" }
+			name mapcheck
+			rect 0 0 640 480
+			style 0
+			border 0
+			backcolor 0 0 0 0
+			border 1
+			bordercolor 0 0 0 0 
+			visible 1
+			mouseEnter {setcvar menu_mapback "ded" ; hide mapcheck }
+		}
+
+		itemDef {
+			cvartest mapname
+			showcvar { "ut4_enceladus_b1" }
+			name mapcheck
+			rect 0 0 640 480
+			style 0
+			border 0
+			backcolor 0 0 0 0
+			border 1
+			bordercolor 0 0 0 0 
+			visible 1
+			mouseEnter {setcvar menu_mapback "ence" ; hide mapcheck }
+		}
+
+		itemDef {
+			cvartest mapname
+			showcvar { "ut43_egyptlantis_a2" }
+			name mapcheck
+			rect 0 0 640 480
+			style 0
+			border 0
+			backcolor 0 0 0 0
+			border 1
+			bordercolor 0 0 0 0 
+			visible 1
+			mouseEnter {setcvar menu_mapback "etlant" ; hide mapcheck }
+		}
+
+		itemDef {
+			cvartest mapname
+			showcvar { "ut43_flex0_b1" }
+			name mapcheck
+			rect 0 0 640 480
+			style 0
+			border 0
+			backcolor 0 0 0 0
+			border 1
+			bordercolor 0 0 0 0 
+			visible 1
+			mouseEnter {setcvar menu_mapback "flex0" ; hide mapcheck }
+		}
+
+		itemDef {
+			cvartest mapname
+			showcvar { "ut4_aurora_b1"; "ut43_aurora_b1" }
+			name mapcheck
+			rect 0 0 640 480
+			style 0
+			border 0
+			backcolor 0 0 0 0
+			border 1
+			bordercolor 0 0 0 0 
+			visible 1
+			mouseEnter {setcvar menu_mapback "aurora" ; hide mapcheck }
+		}
+		
+		itemDef {
+			cvartest mapname
+			showcvar { "ut4_avacyn_b1" }
+			name mapcheck
+			rect 0 0 640 480
+			style 0
+			border 0
+			backcolor 0 0 0 0
+			border 1
+			bordercolor 0 0 0 0 
+			visible 1
+			mouseEnter {setcvar menu_mapback "ava" ; hide mapcheck }
+		}
+
+		itemDef {
+			cvartest mapname
+			showcvar { "ut43_azurea_b1" ; "ut4_azurea_b1" }
+			name mapcheck
+			rect 0 0 640 480
+			style 0
+			border 0
+			backcolor 0 0 0 0
+			border 1
+			bordercolor 0 0 0 0 
+			visible 1
+			mouseEnter {setcvar menu_mapback "azurea" ; hide mapcheck }
+		}
+
+		itemDef {
+			cvartest mapname
+			showcvar { "ut43_babylon_b1" ; "ut43_babylon_b2" }
+			name mapcheck
+			rect 0 0 640 480
+			style 0
+			border 0
+			backcolor 0 0 0 0
+			border 1
+			bordercolor 0 0 0 0 
+			visible 1
+			mouseEnter {setcvar menu_mapback "babylon" ; hide mapcheck }
+		}
+
+		itemDef {
+			cvartest mapname
+			showcvar { "ut43_betel_b1" }
+			name mapcheck
+			rect 0 0 640 480
+			style 0
+			border 0
+			backcolor 0 0 0 0
+			border 1
+			bordercolor 0 0 0 0 
+			visible 1
+			mouseEnter {setcvar menu_mapback "betel" ; hide mapcheck }
+		}
+
+		itemDef {
+			cvartest mapname
+			showcvar { "ut4_bitterblossom_b1" ; "ut4_bitterblossom_b2" ; "ut4_bitterblossom_classic" }
+			name mapcheck
+			rect 0 0 640 480
+			style 0
+			border 0
+			backcolor 0 0 0 0
+			border 1
+			bordercolor 0 0 0 0 
+			visible 1
+			mouseEnter {setcvar menu_mapback "bitter" ; hide mapcheck }
+		}
+
+		itemDef {
+			cvartest mapname
+			showcvar { "ut43_black_b2" ; "ut43_black_b1" ; "ut43_black_b3" ; "ut43_black_b2_slick" ; "ut43_black_slick_v2" ; "ut43_quakshot01_black1" }
+			name mapcheck
+			rect 0 0 640 480
+			style 0
+			border 0
+			backcolor 0 0 0 0
+			border 1
+			bordercolor 0 0 0 0 
+			visible 1
+			mouseEnter {setcvar menu_mapback "black" ; hide mapcheck }
+		}
+
+		itemDef {
+			cvartest mapname
+			showcvar { "ut43_bloodfog_b2" ; "ut43_bloodfog_b3" ; "ut43_bloodrunner_a1" ; "ut43_bloodrunner_a2" ; "ut43_bloodrunner_b1" }
+			name mapcheck
+			rect 0 0 640 480
+			style 0
+			border 0
+			backcolor 0 0 0 0
+			border 1
+			bordercolor 0 0 0 0 
+			visible 1
+			mouseEnter {setcvar menu_mapback "blood" ; hide mapcheck }
+		}*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	}
+}
+
+
+/*
+		itemDef {
+			cvartest mapname
+			showcvar { "" }
+			name mapcheck
+			rect 0 0 640 480
+			style 0
+			border 0
+			backcolor 0 0 0 0
+			border 1
+			bordercolor 0 0 0 0 
+			visible 1
+			mouseEnter {setcvar menu_mapback "" ; hide mapcheck }
+		}
+*/

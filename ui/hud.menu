@@ -1,0 +1,52 @@
+#include "ui/menudef.h"
+
+// team menu
+//
+// defines from ui_shared.h
+
+{
+	assetGlobalDef
+	{
+		cursor "ui/assets/3_cursor3"			// cursor
+		fadeClamp 1.0					// sets the fadeup alpha
+		fadeCycle 1					// how often fade happens in milliseconds
+		fadeAmount 0.1					// amount to adjust alpha per cycle
+
+		shadowX  5					// x amount for shadow offset
+		shadowY  5					// y amount for shadow offset
+		shadowColor 0.1 0.1 0.1 0.25			// shadow color
+
+		font "fonts/fontImage_40" 40
+		smallFont "fonts/fontImage_30" 30
+		bigFont "fonts/fontImage_50" 50
+		
+				//Checks for commands
+	}
+	
+	
+	
+	menuDef {
+		name "hud"
+		visible 0
+		fullScreen 0
+		//outOfBoundsClick			// this closes the window if it gets a click out of the rectangle
+		rect 0 0 640 480
+		focusColor 0 0 0 0
+		disableColor 0 0 0 0
+		
+		itemDef {
+			cvartest mapname
+			hideCvar { "ut43_red_b1" }
+			name mapcheck1
+			rect -5 -5 650 490
+			style 1
+			type 1
+			border 0
+			backcolor 0 0 0 1
+			border 1
+			bordercolor 0 0 0 0
+			visible 1
+			mouseEnter {setcvar menu_mapback "utj_yellow" ; exec "ut_echo test1" }
+		}	
+	}
+}
