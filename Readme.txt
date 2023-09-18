@@ -1,5 +1,5 @@
 Urban Terror Custom Menu by quak
-Updated: 2023-09-16
+Updated: 2023-09-18
 Version 1.0
 
 
@@ -9,7 +9,7 @@ Goal is to keep the menu similar to the original but fix up some small design th
 
 Notable fetatures:
  - Improved scoreboard (TAB)
- - Improved main menu with quick access to servers and reconnect button.
+ - Improved ingame menu with quick access to servers and reconnect button.
  - Server menu from ingame to quickly check other servers or connect without having to retun to the menu
  - Add most new features from the jump client into the menus
 Note!:
@@ -24,8 +24,9 @@ Add pk3 to your q3ut4 folder.
 
 
 Changelog:
-1.0 :
- - Initial version
+1.0:
+ - Added checkpoints options
+ - Initial Release
 
 
 
