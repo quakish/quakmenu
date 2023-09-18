@@ -25,7 +25,6 @@ Add pk3 to your q3ut4 folder.
 
 Changelog:
 1.0:
- - Added checkpoints options
  - Initial Release
 
 
