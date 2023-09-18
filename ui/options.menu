@@ -1845,7 +1845,7 @@
 				"Disabled", "", 
 				"Basic", " (has been saved|has been loaded|saved.|loaded.|WSAENETUNREACH|odd vertex count)", 
 				"Common Spam", " (has been saved|has been loaded|saved.|loaded.|WSAENETUNREACH|run has been|personal timer has been|a jump run.|odd vertex count|recording a demo|load twice within 2seconds|to demos/|You're on camera|demo recording.|killed herself.|killed himself.|by the Server Admin.)" ,
-				"Extended spam", " (has been saved|has been loaded|saved.|loaded.|WSAENETUNREACH|run has been|personal timer has been|a jump run.|odd vertex count|recording a demo|load twice within 2seconds|to demos/|You're on camera|demo recording.|killed herself.|killed himself.|by the Server Admin.|60 minutes |to vote.|by some well placed HURT!|back flip into the lava.|melted.|source tried to set )" 
+				"Extended spam", " (has been saved|has been loaded|saved.|loaded.|WSAENETUNREACH|run has been|personal timer has been|a jump run.|odd vertex count|recording a demo|load twice within 2seconds|to demos/|You're on camera|demo recording.|killed herself.|killed himself.|by the Server Admin.|to vote.|by some well placed HURT!|back flip into the lava.|melted.|source tried to set |demo : )" 
 			}
 			rect 185 195 250 20
 			textalign 0
