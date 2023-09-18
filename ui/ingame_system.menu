@@ -1329,7 +1329,7 @@
 			name sound
 			group grpSystem
 			cvartest "dmaHD_enable"
-			hideCvar { "0" }
+			showCvar { "1" }
 			type ITEM_TYPE_MULTI
 			text "Interpolation Quality:"
 			cvar "dmaHD_interpolation"
@@ -1348,7 +1348,7 @@
 			name sound
 			group grpSystem
 			cvartest "dmaHD_enable"
-			hideCvar { "0" }
+			showCvar { "1" }
 			type ITEM_TYPE_MULTI
 			text "Mixer Type:"
 			cvar "dmaHD_mixer"
@@ -1366,7 +1366,7 @@
 		itemDef {
 			name sound
 			cvartest "dmaHD_enable"
-			hideCvar { "0" }
+			showCvar { "1" }
 			group grpSystem
 			type ITEM_TYPE_EDITFIELD
 			text "Device:"
@@ -1382,6 +1382,8 @@
 
 		itemDef {
 			name sound
+			cvartest "dmaHD_enable"
+			showCvar { "1" }
 			group grpSystem
 			rect 24 240 259 20
 			textscale 0.20

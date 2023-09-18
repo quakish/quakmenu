@@ -232,7 +232,7 @@
 			type 1
 			style 1
 			action { play "sound/misc/kcaction.wav" ; show demo ; hide gun ; hide general ; hide crosshair ; hide minimap ; hide blood ; hide bullet ; hide teaminfo ; hide chat ; hide meters ; hide jump ; hide jump2 ; hide speed ; hide render ; hide console }
-			text "Demo Settings"
+			text "Demos & Checkpoints"
 			rect 25 166 150 20
 			textalign 0
 			textalignx 10
@@ -1667,6 +1667,54 @@
 			visible 1
 		}
 		
+		itemDef {
+			name drawcheckpoints
+			group demo
+			type ITEM_TYPE_YESNO
+			Action { play "sound/misc/kcaction.wav" }
+			text "Draw Checkpoints:"
+			cvar "cg_drawcheckpoints"
+			rect 185 110 250 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			forecolor 1 1 1 1
+			visible 1
+		}
+		
+		itemDef {
+			name drawcheckpointsx
+			group demo
+			type ITEM_TYPE_NUMERICFIELD
+			Action { play "sound/misc/kcaction.wav" }
+			text "Checkpoints X Position:"
+			cvar "cg_drawcheckpoints_x"
+			rect 185 130 250 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			forecolor 1 1 1 1
+			visible 1
+		}
+		
+		itemDef {
+			name drawcheckpointsy
+			group demo
+			type ITEM_TYPE_NUMERICFIELD
+			Action { play "sound/misc/kcaction.wav" }
+			text "Checkpoints Y Position:"
+			cvar "cg_drawcheckpoints_y"
+			rect 185 150 250 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .25
+			forecolor 1 1 1 1
+			visible 1
+		}
+		
 		// Console
 		
 		itemDef {
@@ -1808,7 +1856,7 @@
 				"Disabled", "", 
 				"Basic", " (has been saved|has been loaded|saved.|loaded.|WSAENETUNREACH|odd vertex count)", 
 				"Common Spam", " (has been saved|has been loaded|saved.|loaded.|WSAENETUNREACH|run has been|personal timer has been|a jump run.|odd vertex count|recording a demo|load twice within 2seconds|to demos/|You're on camera|demo recording.|killed herself.|killed himself.|by the Server Admin.)" ,
-				"Extended spam", " (has been saved|has been loaded|saved.|loaded.|WSAENETUNREACH|run has been|personal timer has been|a jump run.|odd vertex count|recording a demo|load twice within 2seconds|to demos/|You're on camera|demo recording.|killed herself.|killed himself.|by the Server Admin.|60 minutes |to vote.|by some well placed HURT!|back flip into the lava.|melted.|source tried to set )" 
+				"Extended spam", " (has been saved|has been loaded|saved.|loaded.|WSAENETUNREACH|run has been|personal timer has been|a jump run.|odd vertex count|recording a demo|load twice within 2seconds|to demos/|You're on camera|demo recording.|killed herself.|killed himself.|by the Server Admin.|to vote.|by some well placed HURT!|back flip into the lava.|melted.|source tried to set |demo : )" 
 			}
 			rect 185 195 250 20
 			textalign 0
@@ -2157,6 +2205,22 @@
 		}
 		
 		itemDef {
+			name cgazyh
+			group jump2
+			type ITEM_TYPE_TEXT 
+			cvartest "jumphud_enabled"
+			ShowCvar { "1" ; "2" ; "3" }
+			text "(Y Size)"
+			rect 335 55 250 20
+			textscale 0.22
+			textalign 0
+			textalignx 11
+			textaligny 15
+			forecolor 1 1 1 1
+			visible 1
+		}
+		
+		itemDef {
 			name cgazspeed
 			group jump2
 			type ITEM_TYPE_MULTI
@@ -2208,6 +2272,22 @@
 			textalignx 10
 			textaligny 15
 			textscale .25
+			forecolor 1 1 1 1
+			visible 1
+		}
+		
+		itemDef {
+			name snapyh
+			group jump2
+			type ITEM_TYPE_TEXT 
+			cvartest "jumphud_enabled"
+			ShowCvar { "1" ; "2" ; "3" }
+			text "(Y Size)"
+			rect 335 115 250 20
+			textscale 0.22
+			textalign 0
+			textalignx 11
+			textaligny 15
 			forecolor 1 1 1 1
 			visible 1
 		}
@@ -2463,7 +2543,7 @@
 			group render
 			type ITEM_TYPE_MULTI
 			Action { play "sound/misc/kcaction.wav" }
-			text "Style:"
+			text "Trigger Render Shader:"
 			cvar "r_renderTriggerBrushesShader"
 			cvarStrList { 
 			"Blended", "tcRenderShader",
@@ -2500,7 +2580,7 @@
 			group render
 			type ITEM_TYPE_MULTI
 			Action { play "sound/misc/kcaction.wav" }
-			text "Style:"
+			text "Slick Render Shader:"
 			cvar "r_renderSlickSurfacesShader"
 			cvarStrList { 
 			"Blended", "tcRenderShader",
@@ -2537,7 +2617,7 @@
 			group render
 			type ITEM_TYPE_MULTI
 			Action { play "sound/misc/kcaction.wav" }
-			text "Style:"
+			text "Clip Render Shader:"
 			cvar "r_renderClipBrushesShader"
 			cvarStrList { 
 			"Blended", "tcRenderShader",
@@ -2574,7 +2654,7 @@
 			group render
 			type ITEM_TYPE_MULTI
 			Action { play "sound/misc/kcaction.wav" }
-			text "Style:"
+			text "Ladders Render Shader:"
 			cvar "r_renderLadderSurfacesShader"
 			cvarStrList { 
 			"Blended", "tcRenderShader",
@@ -2603,6 +2683,20 @@
 			textaligny 15
 			textscale .25
 			forecolor 1 1 1 1
+			visible 1
+		}
+		
+		itemDef {
+			name rendertext
+			group render
+			type 0
+			text "New render shaders requires /vid_restart"
+			rect 185 235 250 20
+			textalign 0
+			textalignx 10
+			textaligny 15
+			textscale .18
+			forecolor 1 0 0 1
 			visible 1
 		}
 		
